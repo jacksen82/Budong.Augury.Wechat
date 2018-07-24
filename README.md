@@ -1,1 +1,1 @@
-# Budong.Ting.Wechat
+# Budong.Capsule.Wechat

@@ -1,0 +1,5 @@
+//  filters/filter.wxs
+
+module.exports = {
+
+};

@@ -1,0 +1,19 @@
+<!--index.wxml-->
+
+<view class="container">  
+
+  <view class="recorder">
+    <view class="button">
+      <button class="">开始录音</button>
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view class="item left">
+      我发出的
+    </view>
+    <view class="item right">
+      我听过的
+    </view>
+  </view>
+</view>

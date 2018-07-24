@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "onReachBottomDistance": 50,
+    "backgroundTextStyle": "dark",
+    "backgroundColorTop": "#f5f7f6",
+    "backgroundColorBottom": "#f5f7f6",
+    "navigationBarBackgroundColor": "#414246",
+    "navigationBarTitleText": "有声朋友圈",
+    "navigationBarTextStyle": "white"
+  }
+}
