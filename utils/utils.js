@@ -58,5 +58,18 @@ module.exports = {
   addYear: function(date, years){
 
     return new Date(date.getFullYear() + years, date.getMonth(), date.getDate());
+  }, 
+
+  waitingFor: function(validate, callback){
+
+    var timeoutCallback = function(){
+
+      if (!validate || !validate()) {
+        setTimeout(timeoutCallback, 100);
+      } else {
+        callback && callback();
+      }
+    };
+    setTimeout(timeoutCallback, 100);
   }
 }

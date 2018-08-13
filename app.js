@@ -3,6 +3,7 @@
 const util = require('utils/utils.js')
 const constants = require('data/constants.js')
 const store = require('data/store.js')
+const client = require('services/client.js')
 
 App ({
 
@@ -17,9 +18,12 @@ App ({
 
     //  获取本地缓存三方标识
     constants.APP_SCENE = options.scene || 0;
-    constants.APP_QUERY = options.query || {};
+    constants.APP_QUERY_CID = (options.query || {}).cid || 0;
     constants.APP_SHARETICKET = options.shareTicket;
     constants.APP_3RD_SESSION = wx.getStorageSync('session3rd') || '';
+
+    //  访问授权
+    client.authorize(function (data) { });
   },
   
   /*
@@ -29,7 +33,7 @@ App ({
 
     //  获取本地缓存三方标识
     constants.APP_SCENE = options.scene || 0;
-    constants.APP_QUERY = options.query || {};
+    constants.APP_QUERY_CID = (options.query || {}).cid || 0;
     constants.APP_SHARETICKET = options.shareTicket;
   }
 })

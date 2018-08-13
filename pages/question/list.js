@@ -1,4 +1,4 @@
-// pages/index/index.js
+// pages/question/list.js
 
 const app = getApp()
 const utils = require('../../utils/utils.js')
@@ -12,15 +12,15 @@ Page({
     说明：页面的初始数据
   */
   data: {
-    loading: true,
-    clientNick: '',
-    clientGender: 0,
-    clientAvatar: '',
-    clientActived: 0,
-    visiterItems: [{
-      avatarUrl: 'http://img.hb.aicdn.com/fa74d6f57c25912de254fe19191a27796a7dc7f81997c-nkPfgJ_sq75sf'
-    }],
-    questionItems: []
+    questionItems: [{
+        title: '我喜欢吃的水果？'
+      },{
+        title: '我喜欢去的旅行目的地？'
+      },{
+        title: '我喜欢看的电影类型？'
+      },{
+        title: '我一个人时想去的场所？'
+      }]
   },
 
   /* 
@@ -28,16 +28,13 @@ Page({
   */
   onLoad: function (options) {
 
-    var wp = this; 
+    var wp = this;
 
-    utils.waitingFor(function(){
+    utils.waitingFor(function () {
 
       return store.client && store.client.id ? true : false;
-    }, function(){
+    }, function () {
 
-      wx.navigateTo({
-        url: '/pages/question/list',
-      })
       wp.setData({
         loading: false,
         clientNick: (store.client || {}).nick,
@@ -59,14 +56,14 @@ Page({
     说明：分享回调事件
   */
   onShareAppMessage: function (res) {
-    
-    return client.shareAppMessage(res, {}, function(){ });
+
+    return client.shareAppMessage(res, {}, function () { });
   },
 
   /*
     说明：绑定授权
   */
-  onGetUserInfo: function(res){
+  onGetUserInfo: function (res) {
 
     if (res.detail && res.detail.errMsg == 'getUserInfo:ok') {
       client.setUserInfo(res.detail.userInfo, function (data) {
@@ -83,7 +80,7 @@ Page({
   /*
     说明：题目管理
   */
-  onQuestion: function(){
+  onQuestion: function () {
 
     wx.navigateTo({
       url: '/pages/question/list',

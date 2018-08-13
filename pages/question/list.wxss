@@ -1,0 +1,29 @@
+/* pages/question/list.wxss */
+
+page {
+  background: #3f3c51;
+}
+
+.questions {
+  display: block;
+  padding: 15px;
+}
+.questions .item {
+  display: block;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 22px;
+  background: #efefef;
+}
+
+.button {
+  display: block;
+  height: 44px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 44px;
+  margin-top: 15px;
+  border-radius: 22px;
+  background:#f9645e;
+}

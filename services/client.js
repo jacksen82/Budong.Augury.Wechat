@@ -14,7 +14,7 @@ const client = {
     if (constants.APP_3RD_SESSION) {
       wx.checkSession({
         success: function (res) {
-
+          
           client.token(callback);
         },
         fail: function (res) {
@@ -32,10 +32,18 @@ const client = {
   */
   token: function (callback) {
 
-    //  请求 token 接口
-    callback({
-      code: 0,
-      message: '成功'
+    ajax.post('/client/token.ashx', {
+
+    }, function (data) {
+      
+      if (data.code == 0 && data.data && data.data.session3rd) {
+        data = data.data || {};
+        store.auth(data.session3rd, data.client);
+        client.getShareInfo();
+        callback(data);
+      } else {
+        client.login(callback);
+      }
     });
   },
 
@@ -47,10 +55,21 @@ const client = {
     wx.login({
       success: function (res) {
 
-        //  请求 login 接口
-        callback({
-          code: 0,
-          message: '成功'
+        ajax.post('/client/login.ashx', {
+          code: res.code
+        }, function (data) {
+          
+          if (data.code == 0) {
+            data = data.data || {};
+            store.auth(data.session3rd, data.client);
+            client.getShareInfo();
+            callback(data);
+          } else {
+            wx.showToast({
+              icon: 'none',
+              title: (data.message || {}).errMsg || '网络错误'
+            })
+          }
         });
       },
       fail: function (res) {
@@ -64,22 +83,42 @@ const client = {
   },
 
   /*
-    说明：建立用户关系
+    说明：更新用户信息
+  */
+  setUserInfo: function (userInfo, callback) {
+
+    ajax.post('/client/setuserinfo.ashx', {
+      nick: userInfo.nickName || '',
+      gender: userInfo.gender || 0,
+      avatarUrl: userInfo.avatarUrl || ''
+    }, function (data) {
+
+      if (data.code == 0) {
+        data = data.data || {};
+        store.client = data.client || {};
+        callback(data);
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: data.message
+        })
+      }
+    });
+  },
+
+  /*
+    说明：获取分享信息
   */
   getShareInfo: function () {
 
-    if (constants.APP_QUERY.cid) {
+    if (constants.APP_QUERY_CID) {
       if (constants.APP_SHARETICKET) {
 
         wx.getShareInfo({
           shareTicket: constants.APP_SHARETICKET,
           success: function (res) {
 
-            //  请求 relate 接口
-            callback({
-              code: 0,
-              message: '成功'
-            });
+            client.relate(constants.APP_QUERY_CID, res.encryptedData, res.iv);
           },
           fail: function (res) {
 
@@ -90,14 +129,23 @@ const client = {
           }
         });
       } else {
-
-        //  请求 relate 接口
-        callback({
-          code: 0,
-          message: '成功'
-        });
+        client.relate(constants.APP_QUERY_CID, '', '');
       }
     }
+  },
+
+  /*
+    说明：建立关联关系
+  */
+  relate: function (relateClientId, encrypteData, iv) {
+
+    ajax.post('/client/relate.ashx', {
+      relateClientId: relateClientId || 0,
+      encryptedData: encrypteData || '',
+      iv: iv || ''
+    }, function (data) {
+
+    });
   },
 
   /*
@@ -108,16 +156,12 @@ const client = {
     data = data || {};
     
     return {
-      title: '对话未来，对 20 年后的自己说',
+      title: 'xxxxxxxxxx',
       imageUrl: 'http://www.cncrk.com/up/1707/20177384354.png',
-      path: '/pages/index/index?cid=' + (store.client.id || 0) + '&capid=' + (data.capsuleId || 0),
+      path: '/pages/index/index?cid=' + (store.client.id || 0),
       success: function (_res) {
 
-        //  请求 share 接口
-        callback({
-          code: 0,
-          message: '成功'
-        });
+        client.share(res.from, data.capsuleId, callback);
       },
       fail: function (res) {
 
@@ -127,6 +171,26 @@ const client = {
         })
       }
     }
+  },
+
+  /*
+    说明：分享回调 [ 成功/失败 ]
+  */
+  share: function (shareFrom, capsuleId, callback) {
+
+    ajax.post('/client/share.ashx', {
+      shareFrom: shareFrom
+    }, function (data) {
+
+      if (data.code == 0) {
+        callback(data.data || {});
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: (data.message || {}).errMsg || '网络错误'
+        })
+      }
+    });
   }
 };
 

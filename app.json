@@ -1,14 +1,15 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/question/list"
   ],
   "window": {
     "onReachBottomDistance": 50,
     "backgroundTextStyle": "dark",
-    "backgroundColorTop": "#f5f7f6",
-    "backgroundColorBottom": "#f5f7f6",
-    "navigationBarBackgroundColor": "#414246",
-    "navigationBarTitleText": "有声朋友圈",
+    "backgroundColorTop": "#3f3c51",
+    "backgroundColorBottom": "#3f3c51",
+    "navigationBarBackgroundColor": "#3f3c51",
+    "navigationBarTitleText": "测试小程序",
     "navigationBarTextStyle": "white"
   }
 }

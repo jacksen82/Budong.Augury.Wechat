@@ -1,0 +1,10 @@
+<!--pages/question/list.wxml-->
+
+<view class="container">
+  <view class="questions">
+    <view wx:for="{{questionItems}}" wx:key="item" class="item">
+      <ins>{{index + 1}}</ins> <em>{{item.title}}</em>
+    </view>
+    <button class="button">添加题目</button>
+  </view>
+</view>
