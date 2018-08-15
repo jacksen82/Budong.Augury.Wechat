@@ -3,16 +3,41 @@
 page {
   font-size: 14px;
 }
+
 textarea {
   width: auto;
 }
+radio .wx-radio-input {
+    width:24px;
+    height:24px;
+    border-radius:50%;
+}
+radio .wx-radio-input.wx-radio-input-checked {
+    border-color: #1ab3f9 !important;
+    background: #1ab3f9 !important;
+}
+radio .wx-radio-input.wx-radio-input-checked::before {
+    width: 24px;
+    height: 24px;
+    color:#fff;
+    font-size: 15px;
+    text-align: center;
+    line-height: 24px;
+    border-radius:50%;
+    background:transparent;
+    transform:translate(-50%, -50%) scale(1);
+    -webkit-transform:translate(-50%, -50%) scale(1);
+}
+
 button {
   font-size: 14px;
   background: transparent;
 }
+
 button:hover {
   background: transparent;
 }
+
 button::after {
   content: none;
 }

@@ -1,0 +1,115 @@
+/* pages/question/add.wxss */
+
+page {
+  background: #3f3c51;
+}
+
+.form {
+  display: block;
+  padding: 15px;
+}
+.form .row {
+  display: block;
+  border-radius: 22px;
+  background: #efefef;
+}
+.form .row.top15 {
+  margin-top: 15px;
+}
+.form .row .picker {
+  display: block;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 10px 15px;
+  background: transparent;
+}
+.form .row .picker.tip{
+  color: #969696;
+}
+.form .row .text {
+  display: block;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 10px 15px;
+  margin: 0px;
+  background: transparent;
+}
+.form .row .radio-group {
+  display: block;
+  padding: 15px 15px 0px 15px;
+}
+.form .row .radio-option {
+  display: block;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #dcdcdc;
+}
+.form .row .radio-option radio {
+  float: left;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 8px 8px 8px 0px;
+}
+.form .row .radio-option image {
+  float: right;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 8px 0px 8px 8px;
+}
+.form .row .radio-option em {
+  display: block;
+  height: 40px;
+  margin-left: 32px;
+  margin-right: 32px;
+}
+.form .row .radio-option em input {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  border: 0px;
+  background: transparent;
+}
+.form .row .radio-add {
+  display: block;
+  padding: 0px 15px 15px 15px;
+}
+.form .row .radio-add image {
+  float: left;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 10px 10px 10px 0px;
+}
+.form .row .radio-add em {
+  display: block;
+  height: 44px;
+  color: #1ab3f9;
+  font-size: 14px;
+  line-height: 44px;
+  margin-left: 36px;
+}
+.form .row .radio-option:first-child {
+  border-top: 0px;
+}
+.form .row .radio-option:last-child {
+  border-bottom: 0px;
+}
+
+.actions {
+  display: block;
+  padding: 0px 15px 15px 15px;
+}
+.actions .button {
+  display: block;
+  height: 44px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 44px;
+  border-radius: 22px;
+  background:#f9645e;
+}
+.actions .button:active {
+  background: #dd4645;
+}

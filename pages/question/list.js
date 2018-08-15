@@ -5,6 +5,7 @@ const utils = require('../../utils/utils.js')
 const constants = require('../../data/constants.js')
 const store = require('../../data/store.js')
 const client = require('../../services/client.js')
+const tacit = require('../../services/tacit.js')
 
 Page({
 
@@ -12,44 +13,28 @@ Page({
     说明：页面的初始数据
   */
   data: {
-    questionItems: [{
-        title: '我喜欢吃的水果？'
-      },{
-        title: '我喜欢去的旅行目的地？'
-      },{
-        title: '我喜欢看的电影类型？'
-      },{
-        title: '我一个人时想去的场所？'
-      }]
+    questionLoaded: false,
+    questionItems: []
   },
 
   /* 
     说明：页面加载事件
   */
   onLoad: function (options) {
-
-    var wp = this;
-
-    utils.waitingFor(function () {
-
-      return store.client && store.client.id ? true : false;
-    }, function () {
-
-      wp.setData({
-        loading: false,
-        clientNick: (store.client || {}).nick,
-        clientGender: (store.client || {}).gender,
-        clientAvatar: (store.client || {}).avatarUrl,
-        clientActived: (store.client || {}).actived
-      });
-    });
+    
+    this.doQuestionLoad();
   },
 
   /*
     说明：页面显示事件
   */
-  onShow: function (options) {
+  onShow: function(){
 
+    var wp = this;
+
+    if (this.data.questionLoaded == true && store.tacit.questionChanged == true) {
+      this.doQuestionLoad();
+    }
   },
 
   /*
@@ -61,29 +46,60 @@ Page({
   },
 
   /*
-    说明：绑定授权
+    说明：添加题目
   */
-  onGetUserInfo: function (res) {
+  onAdd: function(){
 
-    if (res.detail && res.detail.errMsg == 'getUserInfo:ok') {
-      client.setUserInfo(res.detail.userInfo, function (data) {
-
-      });
-    } else {
-      wx.showToast({
-        icon: 'none',
-        title: '登录失败',
-      })
-    }
+    wx.navigateTo({
+      url: '/pages/question/add',
+    })
   },
 
   /*
-    说明：题目管理
+    说明：更多题目操作
   */
-  onQuestion: function () {
+  onMore: function(e){
 
-    wx.navigateTo({
-      url: '/pages/question/list',
+    var wp = this;
+
+    wx.showActionSheet({
+      itemList: ['删除'],
+      success: function(res){
+
+        if (res.tapIndex == 0) {
+          tacit.question._delete(e.currentTarget.dataset.questionId, function(data){
+            
+            wx.showToast({
+              title: '删除成功',
+            })
+            wp.doQuestionLoad();
+          });
+        }
+      }
     })
+  },
+
+  /*
+    说明：加载题目
+  */
+  doQuestionLoad: function(){
+
+    var wp = this;
+
+    tacit.question.list(function (data) {
+
+      data.data = data.data || [];
+      store.tacit.questionChanged = false;
+
+      for (var i = 0; i < data.data.length; i++) {
+        data.data[i].optionItems = data.data[i].options.split(',');
+      }
+      
+      wp.setData({
+        questionLoaded: true,
+        questionItems: data.data || []
+      });
+    });
   }
+
 })

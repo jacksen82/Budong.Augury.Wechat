@@ -29,10 +29,10 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "来自好友邀请",
 					"pathName": "pages/index/index",
-					"query": "cid=17",
+					"query": "scene=cid-1",
 					"scene": "1007"
 				}
 			]

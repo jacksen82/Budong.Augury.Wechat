@@ -2,9 +2,21 @@
 
 <view class="container">
   <view class="questions">
-    <view wx:for="{{questionItems}}" wx:key="item" class="item">
-      <ins>{{index + 1}}</ins> <em>{{item.title}}</em>
+    <view wx:for="{{questionItems}}" wx:key="item" wx:for-item="item" class="item">
+      <span class="title">
+        <ins class="dot">{{index + 1}}.</ins>
+        <image bindtap="onMore" src="/images/icon_more.png" data-question-id="{{item.id}}" class="more" />
+        <em class="text">{{item.title}}</em>
+      </span>
+      <span class="options">
+        <dfn wx:for="{{item.optionItems}}" wx:key="item" wx:for-item="optionItem" class="option-item {{item.optionSelectedIndex == index ? 'checked' : ''}}">{{optionItem}}</dfn>
+      </span>
     </view>
-    <button class="button">添加题目</button>
+    <view wx:if="{{questionItems.length == 0}}" class="empty">
+      {{ questionLoaded ? '还没有添加任何题目' : '正在加载题目..' }}
+    </view>
+  </view>
+  <view class="actions">
+    <button bindtap="onAdd" class="button">添加题目</button>
   </view>
 </view>

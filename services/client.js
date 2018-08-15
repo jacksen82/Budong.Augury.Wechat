@@ -156,9 +156,9 @@ const client = {
     data = data || {};
     
     return {
-      title: 'xxxxxxxxxx',
+      title: '默契大考验，你觉得我们之间有默契吗？',
       imageUrl: 'http://www.cncrk.com/up/1707/20177384354.png',
-      path: '/pages/index/index?cid=' + (store.client.id || 0),
+      path: '/pages/index/index?scene=cid-' + (store.client.id || 0),
       success: function (_res) {
 
         client.share(res.from, data.capsuleId, callback);

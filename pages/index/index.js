@@ -12,15 +12,12 @@ Page({
     说明：页面的初始数据
   */
   data: {
-    loading: true,
     clientNick: '',
     clientGender: 0,
     clientAvatar: '',
     clientActived: 0,
-    visiterItems: [{
-      avatarUrl: 'http://img.hb.aicdn.com/fa74d6f57c25912de254fe19191a27796a7dc7f81997c-nkPfgJ_sq75sf'
-    }],
-    questionItems: []
+    questionCount: 0,
+    visiterItems: []
   },
 
   /* 
@@ -35,24 +32,22 @@ Page({
       return store.client && store.client.id ? true : false;
     }, function(){
 
-      wx.navigateTo({
-        url: '/pages/question/list',
-      })
-      wp.setData({
-        loading: false,
-        clientNick: (store.client || {}).nick,
-        clientGender: (store.client || {}).gender,
-        clientAvatar: (store.client || {}).avatarUrl,
-        clientActived: (store.client || {}).actived
-      });
+      constants.APP_QUERY_CID = utils.getScene('cid') || 0;
+
+      if (constants.APP_QUERY_CID && constants.APP_QUERY_CID != store.client.id){
+        wx.showToast({
+          title: '开始测试',
+        })
+      } else {
+        wp.setData({
+          clientNick: (store.client || {}).nick,
+          clientGender: (store.client || {}).gender,
+          clientAvatar: (store.client || {}).avatarUrl,
+          clientActived: (store.client || {}).actived,
+          questionCount: (store.client || {}).questionCount
+        });
+      }
     });
-  },
-
-  /*
-    说明：页面显示事件
-  */
-  onShow: function (options) {
-
   },
 
   /*
@@ -68,9 +63,18 @@ Page({
   */
   onGetUserInfo: function(res){
 
+    var wp = this;
+
     if (res.detail && res.detail.errMsg == 'getUserInfo:ok') {
       client.setUserInfo(res.detail.userInfo, function (data) {
 
+        wp.setData({
+          clientNick: (store.client || {}).nick,
+          clientGender: (store.client || {}).gender,
+          clientAvatar: (store.client || {}).avatarUrl,
+          clientActived: (store.client || {}).actived,
+          questionCount: (store.client || {}).questionCount
+        });
       });
     } else {
       wx.showToast({
@@ -88,5 +92,25 @@ Page({
     wx.navigateTo({
       url: '/pages/question/list',
     })
+  },
+
+  /*
+    说明：邀请好友
+  */
+  onShare: function(){
+
+    wx.showModal({
+      title: '操作提示',
+      content: '还没有题目，请先添加',
+      confirmText: '添加题目',
+      success: function (res) {
+
+        if (res.confirm) {
+          wx.navigateTo({
+            url: '/pages/question/list',
+          })
+        }
+      }
+    });
   }
 })

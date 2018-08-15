@@ -5,30 +5,31 @@
     <view class="inner">
       <image src="{{clientAvatar}}" class="avatar" />
       <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" wx:if="{{clientActived !=1}}" class="userinfo">授权登录</button>
-      <view class="nick">
+      <view wx:if="{{clientActived ==1}}" class="nick">
         <image src="/images/icon_gender_{{clientGender || 0}}.png" class="gender" />
-        <text class="text" wx:if="{{clientActived ==1}}">{{clientNick}}</text>
+        <text class="text">{{clientNick}}</text>
       </view>
     </view>
   </view>
   <view class="visiter">
     <text class="caption">谁参与了我的测试</text>
     <view class="repeater">
-      <image src="/images/icon_more.png" class="more" />
+      <image bindtap="onFounder" src="/images/icon_more.png" class="more" />
       <view class="list">
         <image wx:for="{{visiterItems}}" wx:key="item" src="{{item.avatarUrl}}" class="item" />
       </view>
     </view>
   </view>
   <view class="summary">
-    <em class="large">测一测那个好友和你最有默契！</em>
+    <em class="large">测一测看那个好友和你最有默契！</em>
     <button class="link">
-      <dfn bindtap="onQuestion" wx:if="{{questionItems.length == 0}}">点这里添加测试题目</dfn>
-      <dfn bindtap="onQuestion" wx:if="{{questionItems.length > 0}}">点这里修改题目</dfn>
+      <dfn bindtap="onQuestion" wx:if="{{questionCount <= 0}}">请先添加测试题目</dfn>
+      <dfn bindtap="onQuestion" wx:if="{{questionCount > 0}}">点这里修改题目</dfn>
     </button>
   </view>
   <view class="actions">
-    <button class="button">邀请好友测一测</button>
-    <button class="link">我参与过的测试</button>
+    <button bindtap="onShare" class="button" wx:if="{{questionCount <= 0}}">邀请好友来测一测1</button>
+    <button open-type="share" class="button" wx:if="{{questionCount > 0}}">邀请好友来测一测2</button>
+    <button bindtap="onPartake" class="link">我参与过的测试</button>
   </view>
 </view>
