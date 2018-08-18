@@ -6,11 +6,11 @@ page {
 
 .header {
   display: block;
-  position: fixed;
+  position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
-  bottom: 307px;
+  bottom: 200px;
 }
 .header .inner {
   display: block;
@@ -45,10 +45,11 @@ page {
 }
 .header .nick {
   display: block;
-  height: 36px;
-  line-height: 36px;
+  height: 24px;
+  line-height: 24px;
   text-align: center;
-  margin-top: 13px;
+  margin-top: 15px;
+  margin-right: 10px;
 }
 .header .nick .gender {
   display: inline-block;
@@ -64,125 +65,65 @@ page {
   vertical-align: middle;
 }
 
-.visiter {
+.bodyer {
   display: block;
-  position: fixed;
-  left: 0px;
-  right: 0px;
-  bottom: 205px;
-  height: 82px;
-  padding: 10px 15px;
-}
-.visiter .caption {
-  display: block;
-  height: 24px;
-  color: #969696;
-  font-size: 12px;
-  line-height: 24px;
-  padding: 0px 0px 0px 5px;
-}
-.visiter .repeater {
-  display: block;
-  height: 48px;
-  padding-top: 5px;
-}
-.visiter .repeater .list {
-  overflow: hidden;
-  height: 48px;
-  margin-right: 36px;
-}
-.visiter .repeater .list .item {
-  float: left;
-  display: block;
-  width: 48px;
-  height: 48px;
-  margin-right: 10px;
-  border-radius: 50%;
-}
-.visiter .repeater .more {
-  float: right;
-  display: block;
-  width: 24px;
-  height: 24px;
-  padding: 12px 0px;
-  margin: 0px;
-}
-
-.summary {
-  display: block;
-  position: fixed;
-  left: 0px;
-  right: 0px;
-  bottom: 115px;
-  height: 90px;
-  text-align: center;
-  padding: 0px 15px;
-  border-radius: 5px;
-}
-.summary .large {
-  display: block;
-  height: 36px;
-  color: #edf1f2;
-  font-size: 15px;
-  line-height: 36px;
-  padding-bottom: 10px;
-}
-.summary .link {
-  display: block;
-  height: 44px;
-  color: #f9645e;
-  font-size: 15px;
-  line-height: 44px;
-  border: 1px solid #f9645e;
-  border-radius: 22px;
-}
-
-.actions {
-  display: block;
-  position: fixed;
+  position: absolute;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  height: 95px;
-  padding: 15px 15px 5px 15px;
 }
-.actions .button {
+.bodyer .start {
   display: block;
   height: 44px;
   color: #ffffff;
   font-size: 15px;
   font-weight: bold;
   line-height: 44px;
+  margin: 0px 25px;
   border-radius: 22px;
   background:#f9645e;
 }
-.actions .button:active {
-  background: #dd4645;
-}
-.actions .link {
+.bodyer .share {
   display: block;
-  height: 36px;
-  color: #878694;
-  font-size: 14px;
-  line-height: 36px;
-  margin-top: 10px;
+  height: 44px;
+  color: #f9645e;
+  font-size: 15px;
+  line-height: 44px;
+  margin: 20px 25px;
+  border: 1px solid #f9645e;
+  border-radius: 22px;
+}
+.bodyer .friends {
+  display: block;
+  overflow: hidden;
+  height: 48px;
+  text-align: center;
+  padding: 0px 20px;
+}
+.bodyer .friends .item {
+  display: inline-block;
+  width: 48px;
+  height: 48px;
+  margin: 0px 5px;
+  border-radius: 50%;
+}
+.bodyer .more {
+  display: block;
+  color: #bab9c9;
+  font-size: 12px;
+  line-height: 25px;
+  padding: 15px 0px;
 }
 
 @media screen and (min-width: 321px) {  
 
-  .visiter {
-    bottom: 215px;
-    padding: 20px 30px;
+  .header {
+    bottom: 200px;
   }
-  .summary {
-    bottom: 135px;
-    padding: 0px 30px;
+  .bodyer .start {
+    margin: 0px 30px;
   }
-  .summary .large {
-    height: 48px;
-    line-height: 48px;
-  }
-  .actions {
-    padding: 30px 30px 10px 30px;
+  .bodyer .share {
+    margin: 20px 30px;
   }
 }  

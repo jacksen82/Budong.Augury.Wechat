@@ -5,6 +5,7 @@ const utils = require('../../utils/utils.js')
 const constants = require('../../data/constants.js')
 const store = require('../../data/store.js')
 const client = require('../../services/client.js')
+const tacit = require('../../services/tacit.js')
 
 Page({
 
@@ -17,7 +18,8 @@ Page({
     clientAvatar: '',
     clientActived: 0,
     questionCount: 0,
-    visiterItems: []
+    chooseCount: 0,
+    friendItems: []
   },
 
   /* 
@@ -32,6 +34,10 @@ Page({
       return store.client && store.client.id ? true : false;
     }, function(){
 
+      wx.navigateTo({
+        url: '/pages/friend/list',
+      })
+      return ;
       constants.APP_QUERY_CID = utils.getScene('cid') || 0;
 
       if (constants.APP_QUERY_CID && constants.APP_QUERY_CID != store.client.id){
@@ -40,11 +46,12 @@ Page({
         })
       } else {
         wp.setData({
-          clientNick: (store.client || {}).nick,
-          clientGender: (store.client || {}).gender,
-          clientAvatar: (store.client || {}).avatarUrl,
-          clientActived: (store.client || {}).actived,
-          questionCount: (store.client || {}).questionCount
+          clientNick: store.client.nick || '没有昵称',
+          clientGender: store.client.gender,
+          clientAvatar: store.client.avatarUrl,
+          clientActived: store.client.actived,
+          questionCount: store.client.questionCount,
+          friendItems: store.client.friends || []
         });
       }
     });
@@ -85,32 +92,33 @@ Page({
   },
 
   /*
-    说明：题目管理
+    说明：开始测试
   */
-  onQuestion: function(){
+  onTrialStart: function(){
 
     wx.navigateTo({
-      url: '/pages/question/list',
+      url: '/pages/trial/start',
     })
   },
 
   /*
-    说明：邀请好友
+    说明：查看好友列表
   */
-  onShare: function(){
+  onFriendList: function(){
 
-    wx.showModal({
-      title: '操作提示',
-      content: '还没有题目，请先添加',
-      confirmText: '添加题目',
-      success: function (res) {
+    wx.navigateTo({
+      url: '/pages/friend/list',
+    })
+  },
 
-        if (res.confirm) {
-          wx.navigateTo({
-            url: '/pages/question/list',
-          })
-        }
-      }
-    });
+  /*
+    说明：查看好友结果
+  */
+  onFriendResult: function(e){
+
+    wx.navigateTo({
+      url: '/pages/friend/result?rcid=' + e.currentTarget.dataset.relateClientId,
+    })
+    console.log(e);
   }
 })

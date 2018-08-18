@@ -3,10 +3,9 @@
     "pages/index/index",
     "pages/question/list",
     "pages/question/add",
-    "pages/trial/report",
-    "pages/trial/index",
-    "pages/trial/friend",
-    "pages/trial/start"
+    "pages/trial/start",
+    "pages/friend/list",
+    "pages/friend/result"
   ],
   "window": {
     "onReachBottomDistance": 50,
@@ -14,7 +13,7 @@
     "backgroundColorTop": "#3f3c51",
     "backgroundColorBottom": "#3f3c51",
     "navigationBarBackgroundColor": "#3f3c51",
-    "navigationBarTitleText": "测试小程序",
+    "navigationBarTitleText": "性格分析",
     "navigationBarTextStyle": "white"
   }
 }

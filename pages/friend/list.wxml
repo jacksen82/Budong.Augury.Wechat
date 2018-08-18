@@ -1,0 +1,12 @@
+<!--pages/friend/list.wxml-->
+
+<view class="container">
+  <view class="friends">
+    <view wx:for="{{friendItems}}" wx:key="item" class="item">
+      <image src="{{item.avatarUrl}}" class="avatar" />
+      <span class="intro">
+        <em>{{item.nick}}</em>
+      </span>
+    </view>
+  </view>
+</view>

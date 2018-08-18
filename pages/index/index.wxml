@@ -1,6 +1,7 @@
 <!--index.wxml-->
 
 <view class="container">
+
   <view class="header">
     <view class="inner">
       <image src="{{clientAvatar}}" class="avatar" />
@@ -11,25 +12,13 @@
       </view>
     </view>
   </view>
-  <view class="visiter">
-    <text class="caption">谁参与了我的测试</text>
-    <view class="repeater">
-      <image bindtap="onFounder" src="/images/icon_more.png" class="more" />
-      <view class="list">
-        <image wx:for="{{visiterItems}}" wx:key="item" src="{{item.avatarUrl}}" class="item" />
-      </view>
+
+  <view class="bodyer">
+    <button class="start" bindtap="onTrialStart">开始测试</button>
+    <button open-type="share" class="share">了解好友的性格</button>
+    <view class="friends">
+      <image wx:for="{{friendItems}}" wx:key="item" src="{{item.avatarUrl}}" class="item" data-relate-client-id="{{item.relateClientId}}" bindtap="onFriendResult" />
     </view>
-  </view>
-  <view class="summary">
-    <em class="large">测一测看那个好友和你最有默契！</em>
-    <button class="link">
-      <dfn bindtap="onQuestion" wx:if="{{questionCount <= 0}}">请先添加测试题目</dfn>
-      <dfn bindtap="onQuestion" wx:if="{{questionCount > 0}}">点这里修改题目</dfn>
-    </button>
-  </view>
-  <view class="actions">
-    <button bindtap="onShare" class="button" wx:if="{{questionCount <= 0}}">邀请好友来测一测1</button>
-    <button open-type="share" class="button" wx:if="{{questionCount > 0}}">邀请好友来测一测2</button>
-    <button bindtap="onPartake" class="link">我参与过的测试</button>
+    <button class="more" bindtap="onFriendList">点这里看全部好友</button>
   </view>
 </view>

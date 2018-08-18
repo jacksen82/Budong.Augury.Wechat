@@ -1,0 +1,34 @@
+/* pages/friend/list.wxss */
+
+page {
+  background: #3f3c51;
+}
+
+.friends {
+  padding: 15px;
+}
+.friends .item {
+  display: block;
+  height: 48px;
+  padding: 5px;
+  margin-bottom: 7px;
+  border-radius: 48px;
+  background: #bab9c9;
+}
+.friends .item .avatar {
+  float: left;
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+.friends .item .intro {
+  display: block;
+  overflow: hidden;
+  margin-left: 56px;
+}
+.friends .item .intro em {
+  display: block;
+  font-size: 18px;
+  line-height: 48px;
+}

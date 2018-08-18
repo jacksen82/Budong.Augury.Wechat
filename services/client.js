@@ -167,7 +167,7 @@ const client = {
 
         wx.showToast({
           icon: 'none',
-          title: '取消分享'
+          title: '放弃一次了解的机会'
         })
       }
     }
@@ -191,6 +191,47 @@ const client = {
         })
       }
     });
+  },
+
+  /*
+    说明：获取好友
+  */
+  friends: function(pageId, callback){
+
+    if (pageId == 1) {
+      callback({
+        pageCount: 2,
+        data: [{
+          relateClientId: 1,
+          nick: '申栩',
+          avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Fs3GwU6WUX9nqwSiawIicIKuHrnlpQ5J3Y5rMaInbfL1Cb5ffoxDF5lWD5hibgWt0ljfibl8iaib4mYg9wLyWZhac7LA/132'
+        }, {
+          relateClientId: 2,
+          nick: '护腕爱',
+          avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/IujJKkcVyOLsibDtJwQHW6vVBKydedcyqwoLlDF9R9HFJU3SYrpX5QYJwfnE4CIicTXdY2egU1OuMLv8dRXtBQdg/132'
+          }, {
+            relateClientId: 3,
+            nick: '贝贝',
+            avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKIZVQwX01EgB6RAOWHwKp4yeRg76tctbhvtibTfZrNAXTtybqe3yQib7dLbhJJFmfQ2wWk5vpicx3Aw/132'
+        }, {
+          relateClientId: 4,
+          nick: '不知道昵称最长能取多长',
+          avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/WmxkCfNhM2jsHGia1600KjCSqC7ehwUiafhJyWVLS5SQjYoJWvxXHMs7jKich0bqvSbSSTa09iclJRibtBHS6crMD4Q/132'
+          }, {
+            relateClientId: 5,
+            nick: '佳品娘娘娘',
+            avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Hp0w2E15ibNRkVuR20dF64qW965KQRTxb3XHlejbS0Ziba8aFSRoIPlsJ4lIXvb2ticfrrRgRoghIKsP7CtFbYBRg/132'
+        }, {
+          relateClientId: 6,
+          nick: '先皇后',
+          avatarUrl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTKWtH9kqVLWkNKY6zOOv78AmzY7E94vejmZ0h3icHkXcs7EiaXNAOJMxCveNO6VrjUzzCGibSB5AjdBw/132'
+        }]
+      });
+    } else {
+      callback({
+
+      });
+    }
   }
 };
 
