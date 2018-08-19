@@ -1,1 +1,21 @@
 <!--pages/trial/start.wxml-->
+
+<view class="container">
+  <view class="question">
+    <view class="title">
+      <em>{{questionIndex + 1}} / {{questionItems.length}}</em>
+      <dfn>{{title}}</dfn>
+    </view>
+    <view class="options">
+      <radio-group bindchange="onOptionChange" class="radio-group">
+        <label wx:for="{{optionItems}}" wx:key="item" class="radio-option">
+          <radio value="{{index}}" /> 
+          <em>{{item.item}}</em>
+        </label>
+      </radio-group>
+    </view>
+    <view class="actions">
+      <button class="button" bindtap="onSubmit">提交答案，进入下一题</button>
+    </view>
+  </view>
+</view>

@@ -1,1 +1,96 @@
 /* pages/trial/start.wxss */
+
+.container {
+  display: table;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.question {
+  display: table-cell;
+  padding: 0px 15px;
+  vertical-align: middle;
+}
+
+.question .title {
+  display: block;
+  color: #ffffff;
+  font-size: 15px;
+  line-height: 24px;
+  text-align: left;
+  padding: 12px;
+  border-radius: 22px 22px 0px 0px;
+  background: #f9645e;
+}
+.question .title em {
+  display: inline-block;
+  width: 54px;
+  height: 24px;
+  font-family: 'helveticaNeue-Bold','Impact', 'Haettenschweiler', 'Arial Narrow Bold', 'sans-serif';
+  text-align: center;
+  border-radius: 12px;
+  background: rgba(0,0,0,.25);
+}
+.question .title dfn {
+  padding-left: 12px;
+}
+
+.question .options {
+  display: block;
+  border-radius: 0px 0px 22px 22px;
+  background: #f2f2f2;
+}
+.question .options .radio-group {
+  display: block;
+  padding: 15px;
+}
+.question .options .radio-option {
+  display: block;
+}
+.question .options .radio-option radio {
+  float: left;
+  display: block;
+  width: 24px;
+  height: 24px;
+  margin: 10px 10px 10px 0px;
+}
+.question .options .radio-option em {
+  display: block;
+  height: 24px;
+  color: #353535;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 10px 0px;
+  margin-left: 36px;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #dcdcdc;
+}
+.question .options .radio-option:first-child em {
+  border-top: 0px;
+}
+.question .options .radio-option:last-child em {
+  border-bottom: 0px;
+}
+
+.question .actions {
+  display: block;
+  padding-top: 15px;
+}
+.question .actions .button {
+  display: block;
+  height: 44px;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 44px;
+  border-radius: 22px;
+  background:#f9645e;
+}
+
+@media screen and (min-width: 321px) {  
+
+  .question {
+    padding: 0px 25px;
+  }
+}  

@@ -1,0 +1,36 @@
+<!--pages/friend/result.wxml-->
+
+<view class="container">
+
+  <view class="header">
+    <image src="{{friendAvatar}}" class="avatar" />
+    <view class="nick">
+      <image src="/images/icon_gender_{{friendGender || 0}}.png" class="gender" />
+      <text class="text">{{friendNick}}</text>
+    </view>
+  </view>
+
+  <view class="result">
+    asdfasdf
+  </view>
+
+  <view class="actions">
+    <button class="button right">超准 <small>(23)</small></button>
+    <button class="button wrrong">胡扯 <small>(34)</small></button>
+  </view>
+
+  <view class="comments">
+    <view wx:for="{{commentItems}}" wx:key="item" class="item">
+      <image src="{{item.avatarUrl}}" class="avatar" />
+      <span class="intro">
+        <text class="appraise right" wx:if="{{item.appraise == 1}}">超准</text>
+        <text class="appraise wrrong" wx:if="{{item.appraise != 1}}">胡扯</text>
+        <em>{{item.nick}}</em>
+        <dfn>{{item.timespan}}</dfn>
+      </span>
+    </view>
+    <view class="more">
+      {{ commentIsEnd ? '没有更多了' : (commentLoading ? '正在加载..' : '加载更多') }}
+    </view>
+  </view>
+</view>

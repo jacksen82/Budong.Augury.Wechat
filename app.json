@@ -1,11 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/question/list",
-    "pages/question/add",
     "pages/trial/start",
+    "pages/trial/report",
     "pages/friend/list",
-    "pages/friend/result"
+    "pages/friend/detail"
   ],
   "window": {
     "onReachBottomDistance": 50,

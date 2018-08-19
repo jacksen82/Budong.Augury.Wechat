@@ -1,16 +1,12 @@
 /**index.wxss**/
 
-page {
-  background: #3f3c51;
-}
-
 .header {
   display: block;
   position: absolute;
   top: 0px;
   left: 0px;
   right: 0px;
-  bottom: 200px;
+  bottom: 220px;
 }
 .header .inner {
   display: block;
@@ -18,8 +14,8 @@ page {
   top: 50%;
   left: 50%;
   width: 160px;
-  height: 160px;
-  margin-top: -80px;
+  height: 144px;
+  margin-top: -72px;
   margin-left: -80px;
 }
 .header .avatar {
@@ -27,7 +23,7 @@ page {
   width: 96px;
   height: 96px;
   margin: 0px auto;
-  border: 5px solid #4e4b66;
+  border: 6px solid #4e4b66;
   border-radius: 50%;
   background: #4e4b66;
 }
@@ -96,14 +92,14 @@ page {
 .bodyer .friends {
   display: block;
   overflow: hidden;
-  height: 48px;
+  height: 36px;
   text-align: center;
   padding: 0px 20px;
 }
 .bodyer .friends .item {
   display: inline-block;
-  width: 48px;
-  height: 48px;
+  width: 36px;
+  height: 36px;
   margin: 0px 5px;
   border-radius: 50%;
 }
@@ -118,7 +114,7 @@ page {
 @media screen and (min-width: 321px) {  
 
   .header {
-    bottom: 200px;
+    bottom: 220px;
   }
   .bodyer .start {
     margin: 0px 30px;

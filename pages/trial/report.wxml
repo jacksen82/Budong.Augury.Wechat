@@ -1,0 +1,26 @@
+<!--pages/trial/result.wxml-->
+
+<view class="container">
+  
+  <view class="outer">
+
+    <view class="header">
+      <view class="inner">
+        <image src="{{clientAvatar}}" class="avatar" />
+        <view class="nick">
+          <image src="/images/icon_gender_{{clientGender || 0}}.png" class="gender" />
+          <text class="text">{{clientNick}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="result">
+      asdfasdf
+    </view>
+
+    <view class="actions">
+      <button class="button right">超准 <small>(23)</small></button>
+      <button class="button wrrong">胡扯 <small>(34)</small></button>
+    </view>
+  </view>
+</view>

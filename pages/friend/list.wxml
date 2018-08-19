@@ -5,8 +5,14 @@
     <view wx:for="{{friendItems}}" wx:key="item" class="item">
       <image src="{{item.avatarUrl}}" class="avatar" />
       <span class="intro">
+        <button class="link" wx:if="{{item.trialed == 1}}">查看结果</button>
+        <text class="tip" wx:if="{{item.trialed != 1}}">...</text>
         <em>{{item.nick}}</em>
+        <dfn>{{item.timespan}}</dfn>
       </span>
+    </view>
+    <view class="more">
+      {{ friendIsEnd ? '没有更多了' : (friendLoading ? '正在加载..' : '加载更多') }}
     </view>
   </view>
 </view>

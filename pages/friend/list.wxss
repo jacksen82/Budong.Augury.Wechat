@@ -1,34 +1,81 @@
 /* pages/friend/list.wxss */
 
-page {
-  background: #3f3c51;
-}
-
 .friends {
-  padding: 15px;
+  padding: 0px 12px 0px 20px;
 }
 .friends .item {
   display: block;
-  height: 48px;
-  padding: 5px;
-  margin-bottom: 7px;
+  height: 68px;
   border-radius: 48px;
-  background: #bab9c9;
 }
 .friends .item .avatar {
   float: left;
   display: block;
   width: 48px;
   height: 48px;
+  margin: 10px 0px;
   border-radius: 50%;
 }
 .friends .item .intro {
   display: block;
   overflow: hidden;
-  margin-left: 56px;
+  height: 48px;
+  padding: 10px 0px;
+  margin-left: 64px;
+  border-bottom: 1px solid #49465a;
+}
+.friends .item .intro .link {
+  float: right;
+  display: block;
+  width: 72px;
+  height: 30px;
+  color: #f9645e;
+  font-size: 12px;
+  line-height: 28px;
+  text-align: center;
+  padding: 0px;
+  margin: 10px 0px;
+  border: 1px solid #f9645e;
+  border-radius: 16px;
+}
+.friends .item .intro .tip {
+  float: right;
+  display: block;
+  width: 72px;
+  height: 32px;
+  color: #656374;
+  font-size: 12px;
+  line-height: 30px;
+  text-align: center;
+  padding: 0px;
+  margin: 10px 0px;
 }
 .friends .item .intro em {
   display: block;
-  font-size: 18px;
-  line-height: 48px;
+  overflow: hidden;
+  color: #bab9c9;
+  height: 32px;
+  font-size: 15px;
+  font-weight: bold;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  line-height: 24px;
+  margin-right: 82px;
+}
+.friends .item .intro dfn {
+  display: block;
+  color: #656374;
+  height: 16px;
+  font-size: 12px;
+  line-height: 16px;
+  margin-right: 82px;
+}
+
+.friends .more {
+  display: block;
+  height: 50px;
+  color: #656374;
+  font-size: 12px;
+  line-height: 50px;
+  text-align: center;
 }

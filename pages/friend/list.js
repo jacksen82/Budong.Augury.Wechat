@@ -14,6 +14,8 @@ Page({
   */
   data: {
     friendPageId: 1,
+    friendLoading: true,
+    friendIsEnd: false,
     friendItems: []
   },
 
@@ -22,15 +24,17 @@ Page({
   */
   onLoad: function (options) {
 
-    var wp = this;
+    this.doFriendList(this.data.friendPageId);
+  },
 
-    client.friends(this.data.friendPageId, function(data){
+  /*
+    说明：上拉加载更多
+  */
+  onReachBottom: function(){
 
-      console.log(data);
-      wp.setData({
-        friendItems: data.data || []
-      });
-    });
+    if (!this.data.friendLoading && !this.data.friendIsEnd) {
+      this.doFriendList(this.data.friendPageId + 1);
+    }
   },
 
   /*
@@ -39,5 +43,33 @@ Page({
   onShareAppMessage: function (res) {
 
     return client.shareAppMessage(res, {}, function () { });
+  },
+
+  /*
+    说明：绑定好友列表
+  */
+  doFriendList: function(pageId){
+
+    var wp = this;
+
+    this.setData({
+      friendLoading: true
+    });
+
+    tacit.friends(pageId, function (data) {
+
+      if (pageId == 1) {
+        wp.data.friendItems = [];
+      } else {
+        wp.data.friendItems = wp.data.friendItems || [];
+      }
+      wp.data.friendItems = wp.data.friendItems.concat(data.data || []);
+      wp.setData({
+        friendPageId: pageId,
+        friendLoading: false,
+        friendIsEnd: (pageId >= data.pageCount),
+        friendItems: wp.data.friendItems
+      });
+    });
   }
 })

@@ -17,6 +17,7 @@ Page({
     clientGender: 0,
     clientAvatar: '',
     clientActived: 0,
+    clientTrialed: 1,
     questionCount: 0,
     chooseCount: 0,
     friendItems: []
@@ -32,27 +33,17 @@ Page({
     utils.waitingFor(function(){
 
       return store.client && store.client.id ? true : false;
-    }, function(){
+    }, function () {
 
-      wx.navigateTo({
-        url: '/pages/friend/list',
-      })
-      return ;
-      constants.APP_QUERY_CID = utils.getScene('cid') || 0;
+      wp.doClientBind();
+   
+      constants.APP_QUERY_CID = utils.getScene(options, 'cid') || 0;
 
       if (constants.APP_QUERY_CID && constants.APP_QUERY_CID != store.client.id){
-        wx.showToast({
-          title: '开始测试',
+
+        wx.navigateTo({
+          url: '/pages/friend/detail?rcid=' + constants.APP_QUERY_CID,
         })
-      } else {
-        wp.setData({
-          clientNick: store.client.nick || '没有昵称',
-          clientGender: store.client.gender,
-          clientAvatar: store.client.avatarUrl,
-          clientActived: store.client.actived,
-          questionCount: store.client.questionCount,
-          friendItems: store.client.friends || []
-        });
       }
     });
   },
@@ -75,13 +66,7 @@ Page({
     if (res.detail && res.detail.errMsg == 'getUserInfo:ok') {
       client.setUserInfo(res.detail.userInfo, function (data) {
 
-        wp.setData({
-          clientNick: (store.client || {}).nick,
-          clientGender: (store.client || {}).gender,
-          clientAvatar: (store.client || {}).avatarUrl,
-          clientActived: (store.client || {}).actived,
-          questionCount: (store.client || {}).questionCount
-        });
+        wp.doClientBind();
       });
     } else {
       wx.showToast({
@@ -92,12 +77,37 @@ Page({
   },
 
   /*
+    说明：绑定用户信息
+  */
+  doClientBind: function(){
+
+    this.setData({
+      clientNick: store.client.nick || '没有昵称',
+      clientGender: store.client.gender,
+      clientAvatar: store.client.avatarUrl,
+      clientActived: store.client.actived,
+      questionCount: store.client.questionCount,
+      friendItems: store.client.friends || []
+    });
+  },
+
+  /*
     说明：开始测试
   */
   onTrialStart: function(){
 
     wx.navigateTo({
       url: '/pages/trial/start',
+    })
+  },
+
+  /*
+    说明：查看测试结果
+  */
+  onTrialReport: function(){
+
+    wx.navigateTo({
+      url: '/pages/trial/report',
     })
   },
 
@@ -117,8 +127,7 @@ Page({
   onFriendResult: function(e){
 
     wx.navigateTo({
-      url: '/pages/friend/result?rcid=' + e.currentTarget.dataset.relateClientId,
+      url: '/pages/friend/detail?rcid=' + e.currentTarget.dataset.relateClientId,
     })
-    console.log(e);
   }
 })

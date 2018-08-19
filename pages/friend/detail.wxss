@@ -1,0 +1,162 @@
+/* pages/friend/result.wxss */
+
+.container {
+  padding: 0px 25px;
+}
+
+.header {
+  display: block;
+  padding-top: 25px;
+}
+.header .avatar {
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 0px auto;
+  border: 6px solid #4e4b66;
+  border-radius: 50%;
+  background: #4e4b66;
+}
+.header .nick {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-bottom: 25px;
+}
+.header .nick .gender {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.header .text {
+  display: inline-block;
+  color: #bab9c9;
+  font-size: 16px;
+  vertical-align: middle;
+}
+
+.result {
+  display: block;
+  height: 200px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #f2f2f2;
+}
+
+.actions {
+  display: block;
+  height: 36px;
+  padding: 25px 15px 15px 15px;
+}
+.actions .button {
+  display: block;
+  height: 36px;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 36px;
+  border-radius: 18px;
+}
+.actions .button small {
+  font-size: 12px;
+}
+.actions .button.right {
+  float: left;
+  background: #f9645e;
+}
+.actions .button.right small {
+  color: rgba(255,255,255,.75);
+}
+.actions .button.wrrong {
+  float: right;
+  color: #f9645e;
+  background: #f2f2f2;
+}
+.actions .button.wrrong small {
+  color: #4e4b66;
+}
+
+.comments {
+  padding: 0px;
+}
+.comments .item {
+  display: block;
+  height: 68px;
+  border-radius: 48px;
+}
+.comments .item .avatar {
+  float: left;
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 10px 0px;
+  border-radius: 50%;
+}
+.comments .item .intro {
+  display: block;
+  overflow: hidden;
+  height: 48px;
+  padding: 10px 0px;
+  margin-left: 64px;
+  border-bottom: 1px solid #49465a;
+}
+.comments .item .intro .appraise {
+  float: right;
+  display: block;
+  width: 48px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 28px;
+  text-align: center;
+  padding: 0px;
+  margin: 10px 0px;
+  border-radius: 16px;
+}
+.comments .item .intro .appraise.right {
+  color: #f9645e;
+  border: 1px solid #f9645e;
+}
+.comments .item .intro .appraise.wrrong {
+  color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+}
+.comments .item .intro em {
+  display: block;
+  overflow: hidden;
+  color: #bab9c9;
+  height: 32px;
+  font-size: 15px;
+  font-weight: bold;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  line-height: 24px;
+  margin-right: 82px;
+}
+.comments .item .intro dfn {
+  display: block;
+  color: #656374;
+  height: 16px;
+  font-size: 12px;
+  line-height: 16px;
+  margin-right: 82px;
+}
+
+.comments .more {
+  display: block;
+  height: 50px;
+  color: #656374;
+  font-size: 12px;
+  line-height: 50px;
+  text-align: center;
+}
+
+@media screen and (min-width: 321px) {  
+
+  .container .outer {
+    padding: 0px 45px;
+  }
+}  
