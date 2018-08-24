@@ -5,7 +5,6 @@ const utils = require('../../utils/utils.js')
 const constants = require('../../data/constants.js')
 const store = require('../../data/store.js')
 const client = require('../../services/client.js')
-const tacit = require('../../services/tacit.js')
 
 Page({
 
@@ -29,7 +28,7 @@ Page({
   onLoad: function (options) {
 
     var wp = this;
-
+    
     tacit.report(options.rcid, function(data){
 
       wp.setData({

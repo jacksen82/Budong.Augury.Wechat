@@ -5,7 +5,6 @@ const utils = require('../../utils/utils.js')
 const constants = require('../../data/constants.js')
 const store = require('../../data/store.js')
 const client = require('../../services/client.js')
-const tacit = require('../../services/tacit.js')
 
 Page({
 
@@ -27,11 +26,17 @@ Page({
   onLoad: function (options) {
 
     var wp = this;
+    var questions = [];
 
-    tacit.questions(function(data){
+    client.question.all(function(data){
 
+      data = data.data || [];
+
+      for (var i = 0; i < data.length; i++){
+        !data[i].clientId && questions.push(data[i]);
+      }
       wp.setData({
-        questionItems: data || []
+        questionItems: questions
       });
       wp.doQuestionNext(0);
     });
@@ -54,9 +59,11 @@ Page({
       this.setData({
         title: this.data.questionItems[index].title || '',
         optionItems: this.data.questionItems[index].options || [],
+        optionIndex: -1,
         questionId: this.data.questionItems[index].id || 0,
         questionIndex: index
       });
+      console.log(this.data.questionItems[index]);
     } else {
       wx.navigateTo({
         url: '/pages/trial/report',
@@ -87,9 +94,8 @@ Page({
         title: '请选择答案',
       })
     } else {
-      tacit.answer(this.data.questionId, this.data.questionIndex, function(data){
+      client.question.choose(this.data.questionId, this.data.optionItems[this.data.optionIndex].id, function(data){
 
-        console.log(data);
         wp.doQuestionNext(wp.data.questionIndex + 1);
       });
     }

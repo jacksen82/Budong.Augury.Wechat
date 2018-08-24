@@ -50,7 +50,7 @@
   padding: 0px;
   margin: 10px 0px;
 }
-.friends .item .intro em {
+.friends .item .intro .nick {
   display: block;
   overflow: hidden;
   color: #bab9c9;
@@ -62,13 +62,23 @@
   line-height: 24px;
   margin-right: 82px;
 }
-.friends .item .intro dfn {
+.friends .item .intro .desc {
   display: block;
   color: #656374;
   height: 16px;
   font-size: 12px;
   line-height: 16px;
   margin-right: 82px;
+}
+.friends .item .intro .desc .type {
+  display: inline-block;
+  height: 16px;
+  color: #bab9c9;
+  line-height: 15px;
+  vertical-align: middle;
+  padding: 0px 5px;
+  border-radius: 12px;
+  background: rgba(0,0,0,.25);
 }
 
 .friends .more {

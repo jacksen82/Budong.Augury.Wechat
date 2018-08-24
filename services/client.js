@@ -3,6 +3,8 @@
 const constants = require('../data/constants.js')
 const store = require('../data/store.js')
 const ajax = require('../utils/ajax.js')
+const friend = require('friend.js')
+const question = require('question.js')
 
 const client = {
 
@@ -191,7 +193,17 @@ const client = {
         })
       }
     });
-  }
+  },
+
+  /*
+    说明：好友相关接口
+  */
+  friend: friend,
+
+  /*
+    说明：题目相关接口
+  */
+  question: question
 };
 
 module.exports = client;

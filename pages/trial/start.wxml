@@ -9,7 +9,7 @@
     <view class="options">
       <radio-group bindchange="onOptionChange" class="radio-group">
         <label wx:for="{{optionItems}}" wx:key="item" class="radio-option">
-          <radio value="{{index}}" /> 
+          <radio value="{{index}}" checked="{{optionIndex == index}}" /> 
           <em>{{item.item}}</em>
         </label>
       </radio-group>

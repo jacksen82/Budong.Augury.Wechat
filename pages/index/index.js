@@ -5,7 +5,6 @@ const utils = require('../../utils/utils.js')
 const constants = require('../../data/constants.js')
 const store = require('../../data/store.js')
 const client = require('../../services/client.js')
-const tacit = require('../../services/tacit.js')
 
 Page({
 
@@ -17,9 +16,9 @@ Page({
     clientGender: 0,
     clientAvatar: '',
     clientActived: 0,
-    clientTrialed: 1,
-    questionCount: 0,
-    chooseCount: 0,
+    clientTrialed: 0,
+    allQuestionCount: 0,
+    chooseQuestionCount: 0,
     friendItems: []
   },
 
@@ -35,6 +34,9 @@ Page({
       return store.client && store.client.id ? true : false;
     }, function () {
 
+      wx.navigateTo({
+        url: '/pages/trial/start',
+      })
       wp.doClientBind();
    
       constants.APP_QUERY_CID = utils.getScene(options, 'cid') || 0;
@@ -86,7 +88,9 @@ Page({
       clientGender: store.client.gender,
       clientAvatar: store.client.avatarUrl,
       clientActived: store.client.actived,
-      questionCount: store.client.questionCount,
+      clientTrialed: store.client.trialed,
+      allQuestionCount: store.client.allQuestionCount,
+      chooseQuestionCount: store.client.chooseQuestionCount,
       friendItems: store.client.friends || []
     });
   },
@@ -118,16 +122,6 @@ Page({
 
     wx.navigateTo({
       url: '/pages/friend/list',
-    })
-  },
-
-  /*
-    说明：查看好友结果
-  */
-  onFriendResult: function(e){
-
-    wx.navigateTo({
-      url: '/pages/friend/detail?rcid=' + e.currentTarget.dataset.relateClientId,
     })
   }
 })

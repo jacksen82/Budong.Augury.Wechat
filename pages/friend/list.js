@@ -5,7 +5,6 @@ const utils = require('../../utils/utils.js')
 const constants = require('../../data/constants.js')
 const store = require('../../data/store.js')
 const client = require('../../services/client.js')
-const tacit = require('../../services/tacit.js')
 
 Page({
 
@@ -56,7 +55,7 @@ Page({
       friendLoading: true
     });
 
-    tacit.friends(pageId, function (data) {
+    client.friend.list(pageId, function (data) {
 
       if (pageId == 1) {
         wp.data.friendItems = [];
@@ -71,5 +70,15 @@ Page({
         friendItems: wp.data.friendItems
       });
     });
+  },
+
+  /*
+    说明：查看好友结果
+  */
+  onFriendDetail: function (e) {
+
+    wx.navigateTo({
+      url: '/pages/friend/detail?rcid=' + e.currentTarget.dataset.relateClientId,
+    })
   }
 })

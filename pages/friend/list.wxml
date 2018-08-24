@@ -1,14 +1,20 @@
 <!--pages/friend/list.wxml-->
 
+<wxs src="../../filters/filter.wxs" module="filter" />
+
 <view class="container">
   <view class="friends">
     <view wx:for="{{friendItems}}" wx:key="item" class="item">
       <image src="{{item.avatarUrl}}" class="avatar" />
       <span class="intro">
-        <button class="link" wx:if="{{item.trialed == 1}}">查看结果</button>
+        <button class="link" wx:if="{{item.trialed == 1}}" bindtap="onFriendDetail" data-relate-client-id="{{item.id}}">查看结果</button>
         <text class="tip" wx:if="{{item.trialed != 1}}">...</text>
-        <em>{{item.nick}}</em>
-        <dfn>{{item.timespan}}</dfn>
+        <em class="nick">{{item.nick}}</em>
+        <dfn class="desc">
+          <text class="type" wx:if="{{item.relateType == 1001 || item.relateType == 2001}}">好友</text>
+          <text class="type" wx:if="{{item.relateType == 3001}}"><open-data type="groupName" openGId="{{item.openGId}}"></open-data></text>
+          {{filter.getTimeStamp(item.updateTime || item.createTime, 101)}}
+        </dfn>
       </span>
     </view>
     <view class="more">

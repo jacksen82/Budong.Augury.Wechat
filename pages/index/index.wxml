@@ -18,7 +18,7 @@
     <button class="start" bindtap="onTrialReport" wx:if="{{clientTrialed == 1}}">查看测试结果</button>
     <button open-type="share" class="share">了解好友的性格</button>
     <view class="friends">
-      <image wx:for="{{friendItems}}" wx:key="item" src="{{item.avatarUrl}}" class="item" data-relate-client-id="{{item.relateClientId}}" bindtap="onFriendResult" />
+      <image wx:for="{{friendItems}}" wx:key="item" src="{{item.avatarUrl}}" class="item" data-relate-client-id="{{item.id}}" bindtap="onFriendList" />
     </view>
     <button class="more" bindtap="onFriendList">点这里看全部好友</button>
   </view>
