@@ -63,8 +63,8 @@ Page({
         questionId: this.data.questionItems[index].id || 0,
         questionIndex: index
       });
-      console.log(this.data.questionItems[index]);
     } else {
+      wx.navigateBack({ });
       wx.navigateTo({
         url: '/pages/trial/report',
       })

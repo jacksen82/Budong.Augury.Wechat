@@ -5,7 +5,6 @@ const constants = require('constants.js')
 module.exports = {
   
   client: {},
-  tacit: {},
   auth: function(session3rd, client){
 
     this.client = client || {};

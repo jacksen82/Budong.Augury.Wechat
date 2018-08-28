@@ -1,19 +1,16 @@
 /* pages/trial/result.wxss */
 
 .container {
-  display: table;
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  display: block;
 }
 .container .outer {
-  display: table-cell;
+  display: block;
   padding: 0px 25px;
-  vertical-align: middle;
 }
 
 .header {
   display: block;
+  margin: 35px 0px;
 }
 .header .inner {
   display: block;
@@ -36,33 +33,65 @@
   margin-right: 10px;
   margin-bottom: 25px;
 }
-.header .nick .gender {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-.header .text {
-  display: inline-block;
-  color: #bab9c9;
-  font-size: 16px;
-  vertical-align: middle;
-}
 
 .result {
   display: block;
-  height: 200px;
   padding: 15px;
   border-radius: 12px;
   background: #f2f2f2;
 }
-
-.actions {
+.result .title {
   display: block;
-  padding: 25px 15px 0px 15px;
+  height: 24px;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+  padding-top: 10px;
 }
-.actions .button {
+.result .review {
+  display: block;
+  color: #4e4b66;
+  font-size: 15px;
+  line-height: 24px;
+  padding: 15px 0px 10px 0px;
+}
+.result .vouch {
+  display: block;
+  text-align: center;
+  padding: 5px 0px;
+}
+.result .vouch .item {
+  display: block;
+  color: #727272;
+  line-height: 30px;
+  margin: 10px 0px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+}
+.result .vouch .item strong {
+  font-weight: bold;
+}
+.result .vouch .item.good {
+  color: #f9645e;
+  border-color: #f9645e;
+}
+.result .vouch .item.bad {
+  color: #3f3c51;
+  border-color: #3f3c51;
+}
+.result .vouch .item:first-child {
+  margin-top: 0px;
+}
+.result .vouch .item:last-child {
+  margin-bottom: 0px;
+}
+.result .actions {
+  display: block;
+  height: 36px;
+  padding: 15px 0px 0px 0px;
+}
+.result .actions .button {
   display: block;
   height: 36px;
   color: #ffffff;
@@ -70,23 +99,115 @@
   line-height: 36px;
   border-radius: 18px;
 }
-.actions .button small {
+.result .actions .button small {
+  color: rgba(255,255,255,.75);
   font-size: 12px;
 }
-.actions .button.right {
+.result .actions .button.right {
   float: left;
   background: #f9645e;
 }
-.actions .button.right small {
-  color: rgba(255,255,255,.75);
-}
-.actions .button.wrrong {
+.result .actions .button.wrrong {
   float: right;
-  color: #f9645e;
+  color: #f2f2f2;
+  background: #4e4b66;
+}
+
+.share {
+  display: block;
+  height: 40px;
+  text-align: center;
+  padding-top: 15px;
+}
+.share .link {
+  display: inline-block;
+  height: 40px;
+  color: #4e4b66;
+  font-size: 12px;
+  line-height: 40px;
+  margin: 5px 10px;
+  border-radius: 20px;
   background: #f2f2f2;
 }
-.actions .button.wrrong small {
-  color: #4e4b66;
+.share .link:first-child {
+  margin-left: 0px;
+}
+.share .link:last-child {
+  margin-right: 0px;
+}
+
+.comments {
+  padding: 15px 0px 0px 0px;
+}
+.comments .item {
+  display: block;
+  height: 68px;
+  border-radius: 48px;
+}
+.comments .item .avatar {
+  float: left;
+  display: block;
+  width: 48px;
+  height: 48px;
+  margin: 10px 0px;
+  border-radius: 50%;
+}
+.comments .item .intro {
+  display: block;
+  overflow: hidden;
+  height: 48px;
+  padding: 10px 0px;
+  margin-left: 64px;
+  border-bottom: 1px solid #49465a;
+}
+.comments .item .intro .appraise {
+  float: right;
+  display: block;
+  width: 48px;
+  height: 30px;
+  font-size: 12px;
+  line-height: 28px;
+  text-align: center;
+  padding: 0px;
+  margin: 10px 0px;
+  border-radius: 16px;
+}
+.comments .item .intro .appraise.right {
+  color: #f9645e;
+  border: 1px solid #f9645e;
+}
+.comments .item .intro .appraise.wrrong {
+  color: #f2f2f2;
+  border: 1px solid #f2f2f2;
+}
+.comments .item .intro em {
+  display: block;
+  overflow: hidden;
+  color: #bab9c9;
+  height: 32px;
+  font-size: 15px;
+  font-weight: bold;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  line-height: 24px;
+  margin-right: 82px;
+}
+.comments .item .intro dfn {
+  display: block;
+  color: #656374;
+  height: 16px;
+  font-size: 12px;
+  line-height: 16px;
+  margin-right: 82px;
+}
+
+.comments .more {
+  display: block;
+  height: 50px;
+  color: #656374;
+  font-size: 12px;
+  line-height: 50px;
+  text-align: center;
 }
 
 @media screen and (min-width: 321px) {  

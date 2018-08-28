@@ -12,9 +12,18 @@ Page({
     说明：页面的初始数据
   */
   data: {
-    clientAvatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83ep5EXtBZKbrfCbhpiadZkbw9fUf1pAOe9LPibdPwkSFNMYn94JNxibhgXibwWTnwmARGFwYiaD4hJRiaXsQ/132',
-    clientGender: 1,
-    clientNick: '胡万爱'
+    clientAvatar: '',
+    clientCharacterName: '',
+    clientCharacterReview: '',
+    clientCharacterColor: '',
+    clientCharacterSuit: '',
+    clientCharacterUnsuit: '',
+    clientPraiseCount: 0,
+    clientTreadCount: 0,
+    commentPageId: 1,
+    commentLoading: false,
+    commentIsEnd: false,
+    commentItems: []
   },
 
   /* 
@@ -22,12 +31,19 @@ Page({
   */
   onLoad: function (options) {
 
-    var wp = this;
+    this.doClientReport();
 
-    tacit.report(store.client.id, function (data) {
+    this.doCommentList(this.data.commentPageId);
+  },
 
-      console.log(data);
-    });
+  /*
+    说明：上拉加载更多
+  */
+  onReachBottom: function () {
+
+    if (!this.data.commentLoading && !this.data.commentIsEnd) {
+      this.doCommentList(this.data.commentPageId + 1);
+    }
   },
 
   /*
@@ -36,5 +52,65 @@ Page({
   onShareAppMessage: function (res) {
 
     return client.shareAppMessage(res, {}, function () { });
+  },
+
+  /*
+    说明：绑定客户端测试报告
+  */
+  doClientReport: function(){
+
+    var wp = this;
+
+    client.detail(0, function (data) {
+
+      wp.setData({
+        clientAvatar: store.client.avatarUrl,
+        clientCharacterName: store.client.characterName,
+        clientCharacterReview: store.client.characterReview,
+        clientCharacterColor: store.client.character.color,
+        clientCharacterSuit: store.client.character.suitCharacterName,
+        clientCharacterUnsuit: store.client.character.unsuitCharacterName,
+        clientPraiseCount: store.client.praiseCount,
+        clientTreadCount: store.client.treadCount,
+      });
+    });
+
+  },
+
+  /*
+    说明：绑定评价列表
+  */
+  doCommentList: function (pageId) {
+
+    var wp = this;
+
+    this.setData({
+      commentLoading: true
+    });
+
+    client.comment.list(0, pageId, function (data) {
+      
+      wp.data.commentItems = (pageId == 1 ? [] : (wp.data.commentItems || []) );
+      wp.data.commentItems = wp.data.commentItems.concat(data.data || []);
+      wp.setData({
+        commentPageId: pageId,
+        commentLoading: false,
+        commentIsEnd: (pageId >= data.pageCount),
+        commentItems: wp.data.commentItems
+      });
+    });
+  },
+
+  /*
+    说明：评价测试结果
+  */
+  onAppraise: function(e){
+
+    client.comment.appraise(0, e.currentTarget.dataset.appraise, function(data){
+
+      wx.showToast({
+        title: '评价成功',
+      })
+    });
   }
 })

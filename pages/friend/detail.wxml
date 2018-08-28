@@ -1,36 +1,44 @@
 <!--pages/friend/result.wxml-->
 
+<wxs src="../../filters/filter.wxs" module="filter" />
+
 <view class="container">
+  
+  <view class="outer">
 
-  <view class="header">
-    <image src="{{friendAvatar}}" class="avatar" />
-    <view class="nick">
-      <image src="/images/icon_gender_{{friendGender || 0}}.png" class="gender" />
-      <text class="text">{{friendNick}}</text>
+    <view class="header">
+      <view class="inner">
+        <image src="{{clientAvatar}}" class="avatar" />
+      </view>
     </view>
-  </view>
 
-  <view class="result">
-    asdfasdf
-  </view>
-
-  <view class="actions">
-    <button class="button right">超准 <small>(23)</small></button>
-    <button class="button wrrong">胡扯 <small>(34)</small></button>
-  </view>
-
-  <view class="comments">
-    <view wx:for="{{commentItems}}" wx:key="item" class="item">
-      <image src="{{item.avatarUrl}}" class="avatar" />
-      <span class="intro">
-        <text class="appraise right" wx:if="{{item.appraise == 1}}">超准</text>
-        <text class="appraise wrrong" wx:if="{{item.appraise != 1}}">胡扯</text>
-        <em>{{item.nick}}</em>
-        <dfn>{{item.timespan}}</dfn>
-      </span>
+    <view class="result">
+      <view class="title" style="color: {{clientCharacterColor}}">{{clientCharacterName}}</view>
+      <view class="review">{{clientCharacterReview}}</view>
+      <view class="vouch">
+        <span class="item good">适合与 <strong>{{clientCharacterSuit}}</strong> 相处</span>
+        <span class="item bad">不适合与 <strong>{{clientCharacterUnsuit}}</strong> 相处</span>
+      </view>
     </view>
-    <view class="more">
-      {{ commentIsEnd ? '没有更多了' : (commentLoading ? '正在加载..' : '加载更多') }}
+
+    <view class="actions">
+      <button class="button right" bindtap="onAppraise" data-appraise="1">准<small>({{clientPraiseCount}})</small></button>
+      <button class="button wrrong" bindtap="onAppraise" data-appraise="-1">不准<small>({{clientTreadCount}})</small></button>
+    </view>
+
+    <view class="comments">
+      <view wx:for="{{commentItems}}" wx:key="item" class="item">
+        <image src="{{item.avatarUrl}}" class="avatar" />
+        <span class="intro">
+          <text class="appraise right" wx:if="{{item.appraise == 1}}">准</text>
+          <text class="appraise wrrong" wx:if="{{item.appraise != 1}}">不准</text>
+          <em>{{item.nick}}</em>
+          <dfn>{{filter.getTimeStamp(item.createTime, 101)}}</dfn>
+        </span>
+      </view>
+      <view class="more">
+        {{ commentIsEnd ? '没有更多了' : (commentLoading ? '正在加载..' : '加载更多') }}
+      </view>
     </view>
   </view>
 </view>

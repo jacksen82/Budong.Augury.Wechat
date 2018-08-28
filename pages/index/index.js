@@ -34,9 +34,9 @@ Page({
       return store.client && store.client.id ? true : false;
     }, function () {
 
-      wx.navigateTo({
-        url: '/pages/trial/start',
-      })
+      // wx.navigateTo({
+      //   url: '/pages/trial/start',
+      // })
       wp.doClientBind();
    
       constants.APP_QUERY_CID = utils.getScene(options, 'cid') || 0;

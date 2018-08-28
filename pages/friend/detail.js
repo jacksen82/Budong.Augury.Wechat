@@ -12,10 +12,14 @@ Page({
     说明：页面的初始数据
   */
   data: {
-    friendClientId: 0,
-    friendAvatar: 'https://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83ep5EXtBZKbrfCbhpiadZkbw9fUf1pAOe9LPibdPwkSFNMYn94JNxibhgXibwWTnwmARGFwYiaD4hJRiaXsQ/132',
-    friendGender: 1,
-    friendNick: '胡万爱',
+    clientAvatar: '',
+    clientCharacterName: '',
+    clientCharacterReview: '',
+    clientCharacterColor: '',
+    clientCharacterSuit: '',
+    clientCharacterUnsuit: '',
+    clientPraiseCount: 0,
+    clientTreadCount: 0,
     commentPageId: 1,
     commentLoading: false,
     commentIsEnd: false,
@@ -27,15 +31,23 @@ Page({
   */
   onLoad: function (options) {
 
-    var wp = this;
-    
-    tacit.report(options.rcid, function(data){
-
-      wp.setData({
-        friendClientId: options.rcid
-      });
-      wp.doCommentList(wp.data.commentPageId);
+    this.setData({
+      clientId: options.rcid 
     });
+
+    this.doClientReport();
+
+    this.doCommentList(this.data.commentPageId);
+  },
+
+  /*
+    说明：上拉加载更多
+  */
+  onReachBottom: function () {
+
+    if (!this.data.commentLoading && !this.data.commentIsEnd) {
+      this.doCommentList(this.data.commentPageId + 1);
+    }
   },
 
   /*
@@ -57,23 +69,42 @@ Page({
   },
 
   /*
-    说明：加载评价列表
+    说明：绑定客户端测试报告
   */
-  doCommentList: function(pageId){
+  doClientReport: function () {
+
+    var wp = this;
+
+    client.detail(this.data.clientId, function (data) {
+
+      wp.setData({
+        clientAvatar: store.client.avatarUrl,
+        clientCharacterName: store.client.characterName,
+        clientCharacterReview: store.client.characterReview,
+        clientCharacterColor: store.client.character.color,
+        clientCharacterSuit: store.client.character.suitCharacterName,
+        clientCharacterUnsuit: store.client.character.unsuitCharacterName,
+        clientPraiseCount: store.client.praiseCount,
+        clientTreadCount: store.client.treadCount,
+      });
+    });
+
+  },
+
+  /*
+    说明：绑定评价列表
+  */
+  doCommentList: function (pageId) {
 
     var wp = this;
 
     this.setData({
-      friendLoading: true
+      commentLoading: true
     });
 
-    tacit.comments(this.data.friendClientId, pageId, function (data) {
+    client.comment.list(this.data.clientId, pageId, function (data) {
 
-      if (pageId == 1) {
-        wp.data.commentItems = [];
-      } else {
-        wp.data.commentItems = wp.data.commentItems || [];
-      }
+      wp.data.commentItems = (pageId == 1 ? [] : (wp.data.commentItems || []));
       wp.data.commentItems = wp.data.commentItems.concat(data.data || []);
       wp.setData({
         commentPageId: pageId,
@@ -81,6 +112,19 @@ Page({
         commentIsEnd: (pageId >= data.pageCount),
         commentItems: wp.data.commentItems
       });
+    });
+  },
+
+  /*
+    说明：评价测试结果
+  */
+  onAppraise: function (e) {
+
+    client.comment.appraise(this.data.clientId, e.currentTarget.dataset.appraise, function (data) {
+
+      wx.showToast({
+        title: '评价成功',
+      })
     });
   }
 })

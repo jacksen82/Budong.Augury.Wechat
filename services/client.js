@@ -5,6 +5,7 @@ const store = require('../data/store.js')
 const ajax = require('../utils/ajax.js')
 const friend = require('friend.js')
 const question = require('question.js')
+const comment = require('comment.js')
 
 const client = {
 
@@ -79,6 +80,28 @@ const client = {
         wx.showToast({
           icon: 'none',
           title: '登录失败'
+        })
+      }
+    });
+  },
+
+  /*
+    说明：获取用户信息
+  */
+  detail: function (clientId, callback) {
+
+    ajax.post('/client/detail.ashx', {
+      clientId: clientId
+    }, function (data) {
+
+      if (data.code == 0) {
+        data = data.data || {};
+        store.client = data.client || {};
+        callback(data);
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: data.message
         })
       }
     });
@@ -203,7 +226,12 @@ const client = {
   /*
     说明：题目相关接口
   */
-  question: question
+  question: question,
+
+  /*
+    说明：评价相关接口
+  */
+  comment: comment
 };
 
 module.exports = client;

@@ -1,12 +1,19 @@
 /* pages/friend/result.wxss */
 
 .container {
+  display: block;
+}
+.container .outer {
+  display: block;
   padding: 0px 25px;
 }
 
 .header {
   display: block;
-  padding-top: 25px;
+  margin: 35px 0px;
+}
+.header .inner {
+  display: block;
 }
 .header .avatar {
   display: block;
@@ -26,32 +33,64 @@
   margin-right: 10px;
   margin-bottom: 25px;
 }
-.header .nick .gender {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-  margin-right: 5px;
-}
-.header .text {
-  display: inline-block;
-  color: #bab9c9;
-  font-size: 16px;
-  vertical-align: middle;
-}
 
 .result {
   display: block;
-  height: 200px;
   padding: 15px;
   border-radius: 12px;
   background: #f2f2f2;
+}
+.result .title {
+  display: block;
+  height: 24px;
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 24px;
+  text-align: center;
+  padding-top: 10px;
+}
+.result .review {
+  display: block;
+  color: #4e4b66;
+  font-size: 15px;
+  line-height: 24px;
+  padding: 15px 0px 10px 0px;
+}
+.result .vouch {
+  display: block;
+  text-align: center;
+  padding: 5px 0px;
+}
+.result .vouch .item {
+  display: block;
+  color: #727272;
+  line-height: 30px;
+  margin: 10px 0px;
+  border: 1px solid transparent;
+  border-radius: 16px;
+}
+.result .vouch .item strong {
+  font-weight: bold;
+}
+.result .vouch .item.good {
+  color: #f9645e;
+  border-color: #f9645e;
+}
+.result .vouch .item.bad {
+  color: #3f3c51;
+  border-color: #3f3c51;
+}
+.result .vouch .item:first-child {
+  margin-top: 0px;
+}
+.result .vouch .item:last-child {
+  margin-bottom: 0px;
 }
 
 .actions {
   display: block;
   height: 36px;
-  padding: 25px 15px 15px 15px;
+  padding: 15px 0px 0px 0px;
 }
 .actions .button {
   display: block;
@@ -62,26 +101,21 @@
   border-radius: 18px;
 }
 .actions .button small {
+  color: rgba(255,255,255,.75);
   font-size: 12px;
 }
 .actions .button.right {
   float: left;
   background: #f9645e;
 }
-.actions .button.right small {
-  color: rgba(255,255,255,.75);
-}
 .actions .button.wrrong {
   float: right;
-  color: #f9645e;
-  background: #f2f2f2;
-}
-.actions .button.wrrong small {
-  color: #4e4b66;
+  color: #f2f2f2;
+  background: #4e4b66;
 }
 
 .comments {
-  padding: 0px;
+  padding: 15px 0px 0px 0px;
 }
 .comments .item {
   display: block;

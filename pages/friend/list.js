@@ -57,11 +57,7 @@ Page({
 
     client.friend.list(pageId, function (data) {
 
-      if (pageId == 1) {
-        wp.data.friendItems = [];
-      } else {
-        wp.data.friendItems = wp.data.friendItems || [];
-      }
+      wp.data.friendItems = (pageId == 1 ? [] : (wp.data.friendItems || []));
       wp.data.friendItems = wp.data.friendItems.concat(data.data || []);
       wp.setData({
         friendPageId: pageId,

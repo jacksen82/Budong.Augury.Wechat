@@ -12,7 +12,7 @@
     "backgroundColorTop": "#3f3c51",
     "backgroundColorBottom": "#3f3c51",
     "navigationBarBackgroundColor": "#3f3c51",
-    "navigationBarTitleText": "性格分析",
+    "navigationBarTitleText": "性格测试",
     "navigationBarTextStyle": "white"
   }
 }

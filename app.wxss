@@ -3,9 +3,6 @@
 page {
   font-size: 14px;
   background: #3f3c51;  
-  background-image: -webkit-linear-gradient(150deg, #3f3c51 36%, #2e2c3e);
-  background-image: linear-gradient(150deg, #3f3c51 36%, #2e2c3e);
-  background-attachment: fixed;
 }
 
 textarea {
@@ -17,8 +14,8 @@ radio .wx-radio-input {
     border-radius:50%;
 }
 radio .wx-radio-input.wx-radio-input-checked {
-    border-color: #1ab3f9 !important;
-    background: #1ab3f9 !important;
+    border-color: #f9645e !important;
+    background: #f9645e !important;
 }
 radio .wx-radio-input.wx-radio-input-checked::before {
     width: 24px;
