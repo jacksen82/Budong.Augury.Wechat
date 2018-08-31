@@ -34,20 +34,21 @@ Page({
       return store.client && store.client.id ? true : false;
     }, function () {
 
-      // wx.navigateTo({
-      //   url: '/pages/trial/start',
-      // })
       wp.doClientBind();
-   
-      constants.APP_QUERY_CID = utils.getScene(options, 'cid') || 0;
-
-      if (constants.APP_QUERY_CID && constants.APP_QUERY_CID != store.client.id){
-
-        wx.navigateTo({
-          url: '/pages/friend/detail?rcid=' + constants.APP_QUERY_CID,
-        })
-      }
     });
+  },
+
+  onShow: function(){
+
+    if (store.trialDone == true) {
+      store.trialDone = false;
+      wx.navigateTo({
+        url: '/pages/trial/report',
+      })
+    }
+    if (store.client && store.client.id){
+      this.doClientBind();
+    }
   },
 
   /*

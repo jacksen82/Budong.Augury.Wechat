@@ -64,10 +64,8 @@ Page({
         questionIndex: index
       });
     } else {
+      store.trialDone = true;
       wx.navigateBack({ });
-      wx.navigateTo({
-        url: '/pages/trial/report',
-      })
     }
   },
 

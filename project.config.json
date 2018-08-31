@@ -21,6 +21,10 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
@@ -32,7 +36,7 @@
 					"id": 0,
 					"name": "来自好友邀请",
 					"pathName": "pages/index/index",
-					"query": "scene=cid-1",
+					"query": "scene=cid-18",
 					"scene": "1007"
 				}
 			]

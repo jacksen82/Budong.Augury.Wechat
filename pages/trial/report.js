@@ -13,13 +13,19 @@ Page({
   */
   data: {
     clientAvatar: '',
+    clientCharacterId: 0,
     clientCharacterName: '',
-    clientCharacterReview: '',
+    clientCharacterIcon: '',
+    clientCharacterDescribe: '',
+    clientCharacterGood: [],
+    clientCharacterBad: [],
+    clientCharacterFear: '',
+    clientCharacterDesire: '',
+    clientCharacterJob: '',
+    clientCharacterStar: '',
     clientCharacterColor: '',
-    clientCharacterSuit: '',
-    clientCharacterUnsuit: '',
-    clientPraiseCount: 0,
-    clientTreadCount: 0,
+    clientPraiseCount: store.client.praiseCount,
+    clientTreadCount: store.client.treadCount,
     commentPageId: 1,
     commentLoading: false,
     commentIsEnd: false,
@@ -63,18 +69,56 @@ Page({
 
     client.detail(0, function (data) {
 
+      store.client.character = store.client.character || {};
       wp.setData({
         clientAvatar: store.client.avatarUrl,
-        clientCharacterName: store.client.characterName,
-        clientCharacterReview: store.client.characterReview,
+        clientCharacterId: store.client.character.id,
+        clientCharacterName: store.client.character.name,
+        clientCharacterIcon: '/images/icon_character_' + store.client.character.id + '.png',
+        clientCharacterDescribe: store.client.character.describe,
+        clientCharacterGood: (store.client.character.good || '').split("，"),
+        clientCharacterBad: (store.client.character.bad || '').split("，"),
+        clientCharacterFear: store.client.character.fear,
+        clientCharacterDesire: store.client.character.desire,
+        clientCharacterJob: store.client.character.job,
+        clientCharacterStar: store.client.character.star,
         clientCharacterColor: store.client.character.color,
-        clientCharacterSuit: store.client.character.suitCharacterName,
-        clientCharacterUnsuit: store.client.character.unsuitCharacterName,
         clientPraiseCount: store.client.praiseCount,
         clientTreadCount: store.client.treadCount,
       });
     });
+  },
 
+  /*
+    说明：保存图片
+  */
+  onSaveToLocal: function(){
+
+    wx.showLoading({
+      title: '正在保存..',
+    })
+
+    client.question.qrcode(function (data) {
+
+      console.log(constants.HTTP_FILE + data.characterQrCode);
+      wx.getImageInfo({
+        src: constants.HTTP_FILE + data.characterQrCode,
+        success: function (res) {
+
+          wx.saveImageToPhotosAlbum({
+            filePath: res.path,
+            success(res) {
+
+              wx.hideLoading({})
+              wx.showToast({
+                icon: 'none',
+                title: '保存成功，快去分享吧',
+              })
+            }
+          })
+        }
+      })
+    })
   },
 
   /*

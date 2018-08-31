@@ -2,10 +2,7 @@
 
 .container {
   display: block;
-}
-.container .outer {
-  display: block;
-  padding: 0px 25px;
+  padding: 0px 15px;
 }
 
 .header {
@@ -20,9 +17,9 @@
   width: 64px;
   height: 64px;
   margin: 0px auto;
-  border: 6px solid #4e4b66;
+  border: 6px solid rgba(0,0,0,.1);
   border-radius: 50%;
-  background: #4e4b66;
+  background: rgba(0,0,0,.1);
 }
 .header .nick {
   display: block;
@@ -34,88 +31,168 @@
   margin-bottom: 25px;
 }
 
-.result {
+.character {
   display: block;
-  padding: 15px;
-  border-radius: 12px;
-  background: #f2f2f2;
+  padding: 12px;
+  border-radius: 7px;
+  background: #f9f9f9;
 }
-.result .title {
+
+.character .line {
   display: block;
-  height: 24px;
-  font-size: 21px;
+  height: 0px;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #ffffff;
+}
+
+.character .title {
+  display: block;
+}
+.character .title em {
+  display: block;
+  height: 44px;
+  color: #ffffff;
+  font-size: 19px;
   font-weight: bold;
-  line-height: 24px;
   text-align: center;
-  padding-top: 10px;
+  line-height: 44px;
+  border-radius: 7px;
 }
-.result .review {
+.character .title dfn {
   display: block;
-  color: #4e4b66;
-  font-size: 15px;
-  line-height: 24px;
-  padding: 15px 0px 10px 0px;
+  color: #49465a;
+  font-size: 14px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
-.result .vouch {
+
+.character .goodbad {
   display: block;
-  text-align: center;
-  padding: 5px 0px;
+  padding: 12px 0px;
 }
-.result .vouch .item {
+.character .goodbad .icon {
+  float: left;
   display: block;
-  color: #727272;
-  line-height: 30px;
-  margin: 10px 0px;
-  border: 1px solid transparent;
-  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  margin: 34px 15px;
 }
-.result .vouch .item strong {
-  font-weight: bold;
+.character .goodbad .itemlist {
+  display: block;
+  min-height: 64px;
+  margin-left: 104px;
 }
-.result .vouch .item.good {
+.character .goodbad .itemlist .item {
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+}
+.character .goodbad .itemlist .item:before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  margin-right: 9px;
+  border-radius: 50%;
+}
+.character .goodbad .itemlist .item.good {
+  color: #49465a;
+}
+.character .goodbad .itemlist .item.good:before {
+  background: #49465a;
+}
+.character .goodbad .itemlist .item.bad {
   color: #f9645e;
-  border-color: #f9645e;
 }
-.result .vouch .item.bad {
-  color: #3f3c51;
-  border-color: #3f3c51;
+.character .goodbad .itemlist .item.bad:before {
+  background: #f9645e;
 }
-.result .vouch .item:first-child {
-  margin-top: 0px;
+
+.character .review {
+  display: block;
+  padding: 5px 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 7px;
+  background: #ffffff;
 }
-.result .vouch .item:last-child {
-  margin-bottom: 0px;
+.character .review .row {
+  display: block;
+  min-height: 40px;
+  border-bottom: 1px dotted #dcdcdc;
+}
+.character .review .row:last-child {
+  border-bottom: 0px;
+}
+.character .review .row .label {
+  float: left;
+  display: block;
+  width: 56px;
+  height: 20px;
+  color: #838193;
+  font-size: 14px;
+  line-height:20px;
+  padding: 10px 0px;
+}
+.character .review .row .text {
+  display: block;
+  color: #49465a;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 0px;
+  margin-left: 66px;
 }
 
 .actions {
   display: block;
-  height: 36px;
-  padding: 15px 0px 0px 0px;
+  height: 40px;
+  text-align: center;
+  margin-top: 15px;
 }
-.actions .button {
-  display: block;
-  height: 36px;
-  color: #ffffff;
-  font-size: 14px;
-  line-height: 36px;
-  border-radius: 18px;
-}
-.actions .button small {
-  color: rgba(255,255,255,.75);
-  font-size: 12px;
-}
-.actions .button.right {
+.actions .appraise {
   float: left;
+  display: block;
+  height: 38px;
+}
+.actions .appraise .link {
+  float: left;
+  display: block;
+  height: 40px;
+  color: #49465a;
+  font-size: 14px;
+  line-height: 40px;
+  margin-right: 12px;
+  border-radius: 20px;
+  background: #f3f3f3;
+}
+.actions .appraise .link.praise {
+  color: #ffffff;
   background: #f9645e;
 }
-.actions .button.wrrong {
+.actions .appraise .link small {
+  color: rgba(0,0,0,.5);
+  font-size: 12px;
+  margin-left: 5px;
+}
+.actions .share {
   float: right;
-  color: #f2f2f2;
-  background: #4e4b66;
+  display: block;
+  height: 40px;
+}
+.actions .share .link {
+  float: right;
+  display: block;
+  height: 40px;
+  color: #49465a;
+  font-size: 14px;
+  line-height: 40px;
+  border-radius: 20px;
+  background: #f3f3f3;
 }
 
 .comments {
-  padding: 15px 0px 0px 0px;
+  display: block;
+  padding: 5px 0px;
 }
 .comments .item {
   display: block;
@@ -155,8 +232,8 @@
   border: 1px solid #f9645e;
 }
 .comments .item .intro .appraise.wrrong {
-  color: #f2f2f2;
-  border: 1px solid #f2f2f2;
+  color: #f3f3f3;
+  border: 1px solid #f3f3f3;
 }
 .comments .item .intro em {
   display: block;
@@ -172,7 +249,7 @@
 }
 .comments .item .intro dfn {
   display: block;
-  color: #656374;
+  color: #838193;
   height: 16px;
   font-size: 12px;
   line-height: 16px;
@@ -182,7 +259,7 @@
 .comments .more {
   display: block;
   height: 50px;
-  color: #656374;
+  color: #838193;
   font-size: 12px;
   line-height: 50px;
   text-align: center;
@@ -194,3 +271,4 @@
     padding: 0px 45px;
   }
 }  
+

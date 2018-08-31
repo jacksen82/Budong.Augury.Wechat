@@ -9,6 +9,7 @@ module.exports = {
   CLIENT_ACTIVED: false,                            //  用户信息是否已激活
   HTTP_API: 'https://wechat.duomijuan.com/augury/api',//  接口前缀
   HTTP_CDN: 'https://file.duomijuan.com',           //  CDN 前缀
+  HTTP_FILE: 'https://wechat.duomijuan.com',           //  CDN 前缀
   AJAX_TIMESTAMP_NORMAL: 6000,
   AJAX_CODE_TYPE: {
     SESSION_NULL: 101,

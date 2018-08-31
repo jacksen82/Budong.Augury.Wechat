@@ -138,7 +138,6 @@ const client = {
 
     if (constants.APP_QUERY_CID) {
       if (constants.APP_SHARETICKET) {
-
         wx.getShareInfo({
           shareTicket: constants.APP_SHARETICKET,
           success: function (res) {
@@ -181,7 +180,7 @@ const client = {
     data = data || {};
     
     return {
-      title: '默契大考验，你觉得我们之间有默契吗？',
+      title: '回答几道题，测一下你的性格，让你更了解自己？',
       imageUrl: 'http://www.cncrk.com/up/1707/20177384354.png',
       path: '/pages/index/index?scene=cid-' + (store.client.id || 0),
       success: function (_res) {
@@ -192,7 +191,7 @@ const client = {
 
         wx.showToast({
           icon: 'none',
-          title: '放弃一次了解的机会'
+          title: '放弃一次了解朋友的机会'
         })
       }
     }

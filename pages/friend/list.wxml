@@ -11,9 +11,10 @@
         <text class="tip" wx:if="{{item.trialed != 1}}">...</text>
         <em class="nick">{{item.nick}}</em>
         <dfn class="desc">
-          <text class="type" wx:if="{{item.relateType == 1001 || item.relateType == 2001}}">好友</text>
-          <text class="type" wx:if="{{item.relateType == 3001}}"><open-data type="groupName" openGId="{{item.openGId}}"></open-data></text>
-          {{filter.getTimeStamp(item.updateTime || item.createTime, 101)}}
+          <var class="type" wx:if="{{item.relateType == 3001}}">
+            <open-data type="groupName" open-gid="{{item.openGId}}"></open-data>
+          </var>
+          <var class="time">{{filter.getTimeStamp((item.updateTime || item.createTime), 101)}}</var> 
         </dfn>
       </span>
     </view>

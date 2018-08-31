@@ -23,9 +23,9 @@
   width: 96px;
   height: 96px;
   margin: 0px auto;
-  border: 6px solid #4e4b66;
+  border: 6px solid rgba(0,0,0,.1);
   border-radius: 50%;
-  background: #4e4b66;
+  background: rgba(0,0,0,.1);
 }
 .header .userinfo {
   display: block;
@@ -76,7 +76,7 @@
   font-weight: bold;
   line-height: 44px;
   margin: 0px 25px;
-  border-radius: 22px;
+  border-radius: 7px;
   background:#f9645e;
 }
 .bodyer .share {
@@ -87,7 +87,7 @@
   line-height: 44px;
   margin: 20px 25px;
   border: 1px solid #f9645e;
-  border-radius: 22px;
+  border-radius: 7px;
 }
 .bodyer .friends {
   display: block;

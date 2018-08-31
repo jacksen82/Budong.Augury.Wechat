@@ -13,7 +13,8 @@ const comment = {
 
     ajax.post('/client/comment/list.ashx', {
       toClientId: toClientId,
-      pageId: pageId
+      pageId: pageId,
+      pageSize: 20
     }, function (data) {
 
       if (data.code == 0) {

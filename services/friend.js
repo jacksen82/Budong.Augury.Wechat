@@ -12,7 +12,8 @@ const friend = {
   list: function (pageId, callback) {
 
     ajax.post('/client/friend/list.ashx', {
-      pageId: pageId
+      pageId: pageId,
+      pageSize: 20
     }, function (data) {
 
       if (data.code == 0) {

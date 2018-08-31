@@ -2,10 +2,7 @@
 
 .container {
   display: block;
-}
-.container .outer {
-  display: block;
-  padding: 0px 25px;
+  padding: 0px 15px;
 }
 
 .header {
@@ -20,9 +17,9 @@
   width: 64px;
   height: 64px;
   margin: 0px auto;
-  border: 6px solid #4e4b66;
+  border: 6px solid rgba(0,0,0,.1);
   border-radius: 50%;
-  background: #4e4b66;
+  background: rgba(0,0,0,.1);
 }
 .header .nick {
   display: block;
@@ -34,110 +31,180 @@
   margin-bottom: 25px;
 }
 
-.result {
+.character {
   display: block;
-  padding: 15px;
-  border-radius: 12px;
-  background: #f2f2f2;
-}
-.result .title {
-  display: block;
-  height: 24px;
-  font-size: 21px;
-  font-weight: bold;
-  line-height: 24px;
-  text-align: center;
-  padding-top: 10px;
-}
-.result .review {
-  display: block;
-  color: #4e4b66;
-  font-size: 15px;
-  line-height: 24px;
-  padding: 15px 0px 10px 0px;
-}
-.result .vouch {
-  display: block;
-  text-align: center;
-  padding: 5px 0px;
-}
-.result .vouch .item {
-  display: block;
-  color: #727272;
-  line-height: 30px;
-  margin: 10px 0px;
-  border: 1px solid transparent;
-  border-radius: 16px;
-}
-.result .vouch .item strong {
-  font-weight: bold;
-}
-.result .vouch .item.good {
-  color: #f9645e;
-  border-color: #f9645e;
-}
-.result .vouch .item.bad {
-  color: #3f3c51;
-  border-color: #3f3c51;
-}
-.result .vouch .item:first-child {
-  margin-top: 0px;
-}
-.result .vouch .item:last-child {
-  margin-bottom: 0px;
-}
-.result .actions {
-  display: block;
-  height: 36px;
-  padding: 15px 0px 0px 0px;
-}
-.result .actions .button {
-  display: block;
-  height: 36px;
-  color: #ffffff;
-  font-size: 14px;
-  line-height: 36px;
-  border-radius: 18px;
-}
-.result .actions .button small {
-  color: rgba(255,255,255,.75);
-  font-size: 12px;
-}
-.result .actions .button.right {
-  float: left;
-  background: #f9645e;
-}
-.result .actions .button.wrrong {
-  float: right;
-  color: #f2f2f2;
-  background: #4e4b66;
+  padding: 12px;
+  border-radius: 7px;
+  background: #f9f9f9;
 }
 
-.share {
+.character .line {
+  display: block;
+  height: 0px;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #ffffff;
+}
+
+.character .title {
+  display: block;
+}
+.character .title em {
+  display: block;
+  height: 44px;
+  color: #ffffff;
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 44px;
+  border-radius: 7px;
+}
+.character .title dfn {
+  display: block;
+  color: #727272;
+  font-size: 14px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+.character .goodbad {
+  display: block;
+  padding: 12px 0px;
+}
+.character .goodbad .icon {
+  float: left;
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 34px 15px;
+}
+.character .goodbad .itemlist {
+  display: block;
+  min-height: 64px;
+  margin-left: 104px;
+}
+.character .goodbad .itemlist .item {
+  display: block;
+  font-size: 14px;
+  line-height: 22px;
+}
+.character .goodbad .itemlist .item:before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  vertical-align: middle;
+  margin-right: 5px;
+  border-radius: 50%;
+}
+.character .goodbad .itemlist .item.good {
+  color: #353535;
+}
+.character .goodbad .itemlist .item.good:before {
+  background: #353535;
+}
+.character .goodbad .itemlist .item.bad {
+  color: #f9645e;
+}
+.character .goodbad .itemlist .item.bad:before {
+  background: #f9645e;
+}
+
+.character .review {
+  display: block;
+  padding: 5px 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 7px;
+  background: #ffffff;
+}
+.character .review .row {
+  display: block;
+  min-height: 40px;
+  border-bottom: 1px dotted #dcdcdc;
+}
+.character .review .row:last-child {
+  border-bottom: 0px;
+}
+.character .review .row .label {
+  float: left;
+  display: block;
+  width: 56px;
+  height: 20px;
+  color: #838193;
+  font-size: 14px;
+  line-height:20px;
+  padding: 10px 0px;
+}
+.character .review .row .text {
+  display: block;
+  color: #353535;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 0px;
+  margin-left: 66px;
+}
+.character .save {
+  display: block;
+  width: 96px;
+  height: 38px;
+  color: #353535;
+  font-size: 14px;
+  line-height: 38px;
+  margin-top: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  background: #ffffff;
+}
+
+.actions {
   display: block;
   height: 40px;
   text-align: center;
-  padding-top: 15px;
+  margin-top: 15px;
 }
-.share .link {
-  display: inline-block;
+.actions .appraise {
+  float: left;
+  display: block;
+  height: 38px;
+}
+.actions .appraise .link {
+  float: left;
+  display: block;
   height: 40px;
-  color: #4e4b66;
-  font-size: 12px;
+  color: #353535;
+  font-size: 14px;
   line-height: 40px;
-  margin: 5px 10px;
+  margin-right: 12px;
   border-radius: 20px;
-  background: #f2f2f2;
+  background: #f3f3f3;
 }
-.share .link:first-child {
-  margin-left: 0px;
+.actions .appraise .link.praise {
+  color: #ffffff;
+  background: #f9645e;
 }
-.share .link:last-child {
-  margin-right: 0px;
+.actions .appraise .link small {
+  color: rgba(0,0,0,.5);
+  font-size: 12px;
+  margin-left: 5px;
+}
+.actions .share {
+  float: right;
+  display: block;
+  height: 40px;
+}
+.actions .share .link {
+  float: right;
+  display: block;
+  height: 40px;
+  color: #353535;
+  font-size: 14px;
+  line-height: 40px;
+  border-radius: 20px;
+  background: #f3f3f3;
 }
 
 .comments {
-  padding: 15px 0px 0px 0px;
+  display: block;
+  padding: 5px 0px;
 }
 .comments .item {
   display: block;
@@ -177,8 +244,8 @@
   border: 1px solid #f9645e;
 }
 .comments .item .intro .appraise.wrrong {
-  color: #f2f2f2;
-  border: 1px solid #f2f2f2;
+  color: #f3f3f3;
+  border: 1px solid #f3f3f3;
 }
 .comments .item .intro em {
   display: block;
@@ -194,7 +261,7 @@
 }
 .comments .item .intro dfn {
   display: block;
-  color: #656374;
+  color: #838193;
   height: 16px;
   font-size: 12px;
   line-height: 16px;
@@ -204,7 +271,7 @@
 .comments .more {
   display: block;
   height: 50px;
-  color: #656374;
+  color: #838193;
   font-size: 12px;
   line-height: 50px;
   text-align: center;
@@ -216,3 +283,4 @@
     padding: 0px 45px;
   }
 }  
+

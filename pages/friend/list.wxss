@@ -43,9 +43,9 @@
   display: block;
   width: 72px;
   height: 32px;
-  color: #656374;
-  font-size: 12px;
-  line-height: 30px;
+  color: #838193;
+  font-size: 24px;
+  line-height: 14px;
   text-align: center;
   padding: 0px;
   margin: 10px 0px;
@@ -64,7 +64,7 @@
 }
 .friends .item .intro .desc {
   display: block;
-  color: #656374;
+  color: #838193;
   height: 16px;
   font-size: 12px;
   line-height: 16px;
@@ -72,19 +72,31 @@
 }
 .friends .item .intro .desc .type {
   display: inline-block;
+  overflow: hidden;
+  max-width: 72px;
   height: 16px;
-  color: #bab9c9;
-  line-height: 15px;
+  color: #838193;
+  line-height: 16px;
+  text-overflow:ellipsis;
+  white-space:nowrap;
   vertical-align: middle;
   padding: 0px 5px;
+  margin-right: 7px;
   border-radius: 12px;
-  background: rgba(0,0,0,.25);
+  border: 1px solid #838193;
+}
+.friends .item .intro .desc .time {
+  display: inline-block;
+  height: 16px;
+  color: #838193;
+  line-height: 16px;
+  vertical-align: middle;
 }
 
 .friends .more {
   display: block;
   height: 50px;
-  color: #656374;
+  color: #838193;
   font-size: 12px;
   line-height: 50px;
   text-align: center;

@@ -3,46 +3,74 @@
 <wxs src="../../filters/filter.wxs" module="filter" />
 
 <view class="container">
-  
-  <view class="outer">
 
-    <view class="header">
-      <view class="inner">
-        <image src="{{clientAvatar}}" class="avatar" />
+  <view class="header">
+    <view class="inner">
+      <image src="{{clientAvatar}}" class="avatar" />
+    </view>
+  </view>
+
+  <view class="character">
+
+    <view class="title">
+      <em style="background: {{clientCharacterColor}};">{{clientCharacterName}}</em>
+      <dfn>{{clientCharacterDescribe}}</dfn>
+    </view>
+
+    <ins class="line" />
+
+    <view class="goodbad">
+      <image src="{{clientCharacterIcon}}" class="icon" />
+      <view class="itemlist">
+        <text wx:for="{{clientCharacterGood}}" wx:key="item" class="item good">{{item}}</text>
+        <text wx:for="{{clientCharacterBad}}" wx:key="item" class="item bad">{{item}}</text>
       </view>
     </view>
 
-    <view class="result">
-      <view class="title" style="color: {{clientCharacterColor}}">{{clientCharacterName}}</view>
-      <view class="review">{{clientCharacterReview}}</view>
-      <view class="vouch">
-        <span class="item good">适合与 <strong>{{clientCharacterSuit}}</strong> 相处</span>
-        <span class="item bad">不适合与 <strong>{{clientCharacterUnsuit}}</strong> 相处</span>
+    <view class="review">
+      <view class="row">
+        <text class="label">深层欲望</text>
+        <text class="text">{{clientCharacterDesire}}</text>
       </view>
-      <view class="actions">
-        <button class="button right" bindtap="onAppraise" data-appraise="1">准<small>({{clientPraiseCount}})</small></button>
-        <button class="button wrrong" bindtap="onAppraise" data-appraise="-1">不准<small>({{clientTreadCount}})</small></button>
+      <view class="row">
+        <text class="label">深层恐惧</text>
+        <text class="text">{{clientCharacterFear}}</text>
+      </view>
+      <view class="row">
+        <text class="label">适合职业</text>
+        <text class="text">{{clientCharacterJob}}</text>
+      </view>
+      <view class="row">
+        <text class="label">常见星座</text>
+        <text class="text">{{clientCharacterStar}}</text>
       </view>
     </view>
+    
+    <button class="save" bindtap="onSaveToLocal">保存图片</button>
+  </view>
 
+  <view class="actions">
+    <view class="appraise">
+      <button class="link praise" bindtap="onAppraise" data-appraise="1">准 <small>{{clientPraiseCount}}</small></button>
+      <button class="link" bindtap="onAppraise" data-appraise="-1">不准 <small>{{clientTreadCount}}</small></button>
+    </view>
     <view class="share">
-      <button open-type="share" class="link">邀请好友测试</button>
-      <button class="link">保存图片分享</button>
+      <button open-type="share" class="link">分享</button>
     </view>
+  </view>
 
-    <view class="comments">
-      <view wx:for="{{commentItems}}" wx:key="item" class="item">
-        <image src="{{item.avatarUrl}}" class="avatar" />
-        <span class="intro">
-          <text class="appraise right" wx:if="{{item.appraise == 1}}">准</text>
-          <text class="appraise wrrong" wx:if="{{item.appraise != 1}}">不准</text>
-          <em>{{item.nick}}</em>
-          <dfn>{{filter.getTimeStamp(item.createTime, 101)}}</dfn>
-        </span>
-      </view>
-      <view class="more">
-        {{ commentIsEnd ? '没有更多了' : (commentLoading ? '正在加载..' : '加载更多') }}
-      </view>
+  <view class="comments">
+    <view wx:for="{{commentItems}}" wx:key="item" class="item">
+      <image src="{{item.avatarUrl}}" class="avatar" />
+      <span class="intro">
+        <text class="appraise right" wx:if="{{item.appraise == 1}}">准</text>
+        <text class="appraise wrrong" wx:if="{{item.appraise != 1}}">不准</text>
+        <em>{{item.nick}}</em>
+        <dfn>{{filter.getTimeStamp(item.createTime, 101)}}</dfn>
+      </span>
+    </view>
+    <view class="more"> 
+      {{ commentIsEnd ? '没有更多了' : (commentLoading ? '正在加载..' : '加载更多') }}
     </view>
   </view>
 </view>

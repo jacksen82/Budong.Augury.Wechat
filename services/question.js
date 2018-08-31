@@ -47,6 +47,26 @@ const question = {
         })
       }
     });
+  },
+
+  /*
+    说明：生成二维码海报
+  */
+  qrcode: function(callback){
+
+    ajax.post('/client/question/qrcode.ashx', {
+    }, function (data) {
+
+      if (data.code == 0) {
+        data = data.data || {};
+        callback(data);
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: data.message
+        })
+      }
+    });
   }
 };
 
