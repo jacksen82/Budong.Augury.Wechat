@@ -34,6 +34,7 @@
   color: #bab9c9;
   font-size: 14px;
   line-height: 36px;
+  text-align: center;
   margin-top: 13px;
   margin-left: auto;
   margin-right: auto;

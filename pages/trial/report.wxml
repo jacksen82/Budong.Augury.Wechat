@@ -4,49 +4,12 @@
 
 <view class="container">
 
-  <view class="header">
-    <view class="inner">
-      <image src="{{clientAvatar}}" class="avatar" />
-    </view>
-  </view>
-
   <view class="character">
-
-    <view class="title">
-      <em style="background: {{clientCharacterColor}};">{{clientCharacterName}}</em>
-      <dfn>{{clientCharacterDescribe}}</dfn>
+    <view class="preview" style="height: {{clientCharacterHeight}}px">
+      <image src="{{clientCharacterImage}}" class="image" style="height: {{clientCharacterHeight}}px" />
+      <image src="{{clientAvatar}}" class="avatar" style="{{clientAvatarStyle}}" />
     </view>
-
-    <ins class="line" />
-
-    <view class="goodbad">
-      <image src="{{clientCharacterIcon}}" class="icon" />
-      <view class="itemlist">
-        <text wx:for="{{clientCharacterGood}}" wx:key="item" class="item good">{{item}}</text>
-        <text wx:for="{{clientCharacterBad}}" wx:key="item" class="item bad">{{item}}</text>
-      </view>
-    </view>
-
-    <view class="review">
-      <view class="row">
-        <text class="label">深层欲望</text>
-        <text class="text">{{clientCharacterDesire}}</text>
-      </view>
-      <view class="row">
-        <text class="label">深层恐惧</text>
-        <text class="text">{{clientCharacterFear}}</text>
-      </view>
-      <view class="row">
-        <text class="label">适合职业</text>
-        <text class="text">{{clientCharacterJob}}</text>
-      </view>
-      <view class="row">
-        <text class="label">常见星座</text>
-        <text class="text">{{clientCharacterStar}}</text>
-      </view>
-    </view>
-    
-    <button class="save" bindtap="onSaveToLocal">保存图片</button>
+    <button class="save" bindtap="onSaveToLocal">保存图片，分享</button>
   </view>
 
   <view class="actions">

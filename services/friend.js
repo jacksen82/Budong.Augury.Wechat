@@ -26,6 +26,27 @@ const friend = {
         })
       }
     });
+  },
+
+  /*
+    说明：获取用户信息
+  */
+  detail: function (clientId, callback) {
+
+    ajax.post('/client/detail.ashx', {
+      clientId: clientId
+    }, function (data) {
+
+      if (data.code == 0) {
+        data = data.data || {};
+        callback(data);
+      } else {
+        wx.showToast({
+          icon: 'none',
+          title: data.message
+        })
+      }
+    });
   }
 };
 

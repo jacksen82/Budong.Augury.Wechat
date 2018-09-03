@@ -14,16 +14,7 @@ Page({
   data: {
     clientAvatar: '',
     clientCharacterId: 0,
-    clientCharacterName: '',
-    clientCharacterIcon: '',
-    clientCharacterDescribe: '',
-    clientCharacterGood: [],
-    clientCharacterBad: [],
-    clientCharacterFear: '',
-    clientCharacterDesire: '',
-    clientCharacterJob: '',
-    clientCharacterStar: '',
-    clientCharacterColor: '',
+    clientCharacterImage: '',
     clientPraiseCount: store.client.praiseCount,
     clientTreadCount: store.client.treadCount,
     commentPageId: 1,
@@ -37,8 +28,15 @@ Page({
   */
   onLoad: function (options) {
 
+    var sysInfo = wx.getSystemInfoSync();
+    var sysWidth = sysInfo.screenWidth;
+    var charWidth = sysWidth - 30;
+    var scale = charWidth / 750;
+
     this.setData({
-      clientId: options.rcid 
+      clientId: options.rcid,
+      clientCharacterHeight: charWidth,
+      clientAvatarStyle: 'top: ' + (scale * 177 - charWidth) + 'px;left:  ' + (scale * 99) + 'px; width: ' + (scale * 140) + 'px; height: ' + (scale * 140) + 'px',
     });
 
     this.doClientReport();
@@ -81,24 +79,16 @@ Page({
 
     var wp = this;
 
-    client.detail(this.data.clientId, function (data) {
+    client.friend.detail(this.data.clientId, function (data) {
 
-      store.client.character = store.client.character  || {};
+      data = data.client || {};
+      data.character = data.character  || {};
       wp.setData({
-        clientAvatar: store.client.avatarUrl,
-        clientCharacterId: store.client.character.id,
-        clientCharacterName: store.client.character.name,
-        clientCharacterIcon: '/images/icon_character_' + store.client.character.id + '.png',
-        clientCharacterDescribe: store.client.character.describe,
-        clientCharacterGood: (store.client.character.good || '').split("，"),
-        clientCharacterBad: (store.client.character.bad || '').split("，"),
-        clientCharacterFear: store.client.character.fear,
-        clientCharacterDesire: store.client.character.desire,
-        clientCharacterJob: store.client.character.job,
-        clientCharacterStar: store.client.character.star,
-        clientCharacterColor: store.client.character.color,
-        clientPraiseCount: store.client.praiseCount,
-        clientTreadCount: store.client.treadCount,
+        clientAvatar: data.avatarUrl,
+        clientCharacterId: data.character.id,
+        clientCharacterImage: '/images/character_' + data.character.id + '.jpg',
+        clientPraiseCount: data.praiseCount,
+        clientTreadCount: data.treadCount,
       });
     });
 

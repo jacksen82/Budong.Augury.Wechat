@@ -4,53 +4,15 @@
 
 <view class="container">
 
-  <view class="header">
-    <view class="inner">
-      <image src="{{clientAvatar}}" class="avatar" />
-    </view>
-  </view>
-
-  <view class="character">
-
-    <view class="title">
-      <em style="background: {{clientCharacterColor}};">{{clientCharacterName}}</em>
-      <dfn>{{clientCharacterDescribe}}</dfn>
-    </view>
-
-    <ins class="line" />
-
-    <view class="goodbad">
-      <image src="{{clientCharacterIcon}}" class="icon" />
-      <view class="itemlist">
-        <text wx:for="{{clientCharacterGood}}" wx:key="item" class="item good">{{item}}</text>
-        <text wx:for="{{clientCharacterBad}}" wx:key="item" class="item bad">{{item}}</text>
-      </view>
-    </view>
-
-    <view class="review">
-      <view class="row">
-        <text class="label">深层欲望</text>
-        <text class="text">{{clientCharacterDesire}}</text>
-      </view>
-      <view class="row">
-        <text class="label">深层恐惧</text>
-        <text class="text">{{clientCharacterFear}}</text>
-      </view>
-      <view class="row">
-        <text class="label">适合职业</text>
-        <text class="text">{{clientCharacterJob}}</text>
-      </view>
-      <view class="row">
-        <text class="label">常见星座</text>
-        <text class="text">{{clientCharacterStar}}</text>
-      </view>
-    </view>
+  <view class="character" style="height: {{clientCharacterHeight}}px">
+    <image src="{{clientCharacterImage}}" class="image" style="height: {{clientCharacterHeight}}px" />
+    <image src="{{clientAvatar}}" class="avatar" style="{{clientAvatarStyle}}" />
   </view>
 
   <view class="actions">
     <view class="appraise">
-      <button class="link praise" bindtap="onAppraise" data-appraise="1">准 <small>{{clientPraiseCount}}</small></button>
-      <button class="link" bindtap="onAppraise" data-appraise="-1">不准 <small>{{clientTreadCount}}</small></button>
+      <button class="link praise" bindtap="onAppraise" data-appraise="1">准 <small>{{clientPraiseCount || 0}}</small></button>
+      <button class="link" bindtap="onAppraise" data-appraise="-1">不准 <small>{{clientTreadCount || 0}}</small></button>
     </view>
     <view class="share">
       <button open-type="share" class="link">分享</button>

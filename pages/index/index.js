@@ -40,14 +40,20 @@ Page({
 
   onShow: function(){
 
+    var wp = this; 
+
     if (store.trialDone == true) {
       store.trialDone = false;
       wx.navigateTo({
         url: '/pages/trial/report',
       })
     }
-    if (store.client && store.client.id){
-      this.doClientBind();
+    if (store.client && store.client.id) {
+
+      client.detail(function (data) {
+
+        wp.doClientBind();
+      });
     }
   },
 
@@ -70,6 +76,9 @@ Page({
       client.setUserInfo(res.detail.userInfo, function (data) {
 
         wp.doClientBind();
+        wx.navigateTo({
+          url: '/pages/trial/start',
+        })
       });
     } else {
       wx.showToast({

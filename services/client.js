@@ -88,10 +88,9 @@ const client = {
   /*
     说明：获取用户信息
   */
-  detail: function (clientId, callback) {
+  detail: function (callback) {
 
     ajax.post('/client/detail.ashx', {
-      clientId: clientId
     }, function (data) {
 
       if (data.code == 0) {
@@ -180,8 +179,8 @@ const client = {
     data = data || {};
     
     return {
-      title: '回答几道题，测一下你的性格，让你更了解自己？',
-      imageUrl: 'http://www.cncrk.com/up/1707/20177384354.png',
+      title: '简单回答几道题，来测一测你是那种性格类型',
+      imageUrl: 'https://wechat.duomijuan.com/augury/share.jpg',
       path: '/pages/index/index?scene=cid-' + (store.client.id || 0),
       success: function (_res) {
 

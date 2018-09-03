@@ -67,38 +67,40 @@ module.exports = {
   */
   getTimeStamp: function (timestamp, formatType) {
     
-    var todayDate = getDate(Date.now());
-    var todayJSON = getDateTimeJSON(todayDate);
-    var stampDate = getDateTime(timestamp);
-    var stampJSON = getDateTimeJSON(stampDate);
-    var ticksDays = (todayDate.getTime() - stampDate.getTime()) / 1000 / 60 / 60 / 24;
+    if (timestamp){
+      var todayDate = getDate(Date.now());
+      var todayJSON = getDateTimeJSON(todayDate);
+      var stampDate = getDateTime(timestamp);
+      var stampJSON = getDateTimeJSON(stampDate);
+      var ticksDays = (todayDate.getTime() - stampDate.getTime()) / 1000 / 60 / 60 / 24;
 
-    switch (formatType) {
-      case 101:
-        if (todayJSON.year - stampJSON.year > 1) { return (todayJSON.year - stampJSON.year) + '年前'; }
-        else if (todayJSON.year - stampJSON.year == 1) { return '去年' + stampJSON.month + '月'; }
-        else {
-          if (ticksDays > 1) { return stampJSON.month + '月' + stampJSON.day + '日'; }
-          else if (ticksDays == 1) { return '昨天' + getHourString(stampJSON.hour); }
+      switch (formatType) {
+        case 101:
+          if (todayJSON.year - stampJSON.year > 1) { return (todayJSON.year - stampJSON.year) + '年前'; }
+          else if (todayJSON.year - stampJSON.year == 1) { return '去年' + stampJSON.month + '月'; }
+          else {
+            if (ticksDays > 1) { return stampJSON.month + '月' + stampJSON.day + '日'; }
+            else if (ticksDays == 1) { return '昨天' + getHourString(stampJSON.hour); }
+            else { return getFullNumber(stampJSON.hour) + ':' + getFullNumber(stampJSON.minute); }
+          }
+        case 201:
+          if (todayJSON.year - stampJSON.year > 1) { return stampJSON.year + '年'; }
+          else if (todayJSON.year - stampJSON.year == 1) { return '去年'; }
+          else if (ticksDays > 1) { return stampJSON.month + '月' + stampJSON.day + '日'; }
+          else if (ticksDays == 1) { return '昨天'; }
+          else { return '今天'; }
+          break;
+        case 301:
+          if (todayJSON.year - stampJSON.year > 0) { return stampJSON.month + '月' + stampJSON.day + '日'; }
+          else if (ticksDays >= 1) { return getHourString(stampJSON.hour); }
           else { return getFullNumber(stampJSON.hour) + ':' + getFullNumber(stampJSON.minute); }
-        }
-      case 201:
-        if (todayJSON.year - stampJSON.year > 1) { return stampJSON.year + '年'; }
-        else if (todayJSON.year - stampJSON.year == 1) { return '去年'; }
-        else if (ticksDays > 1) { return stampJSON.month + '月' + stampJSON.day + '日'; }
-        else if (ticksDays == 1) { return '昨天'; }
-        else { return '今天'; }
-        break;
-      case 301:
-        if (todayJSON.year - stampJSON.year > 0) { return stampJSON.month + '月' + stampJSON.day + '日'; }
-        else if (ticksDays >= 1) { return getHourString(stampJSON.hour); }
-        else { return getFullNumber(stampJSON.hour) + ':' + getFullNumber(stampJSON.minute); }
-      case 401:
-        if (stampJSON.year - todayJSON.year > 1) { return stampJSON.year + '年' + stampJSON.month + '月'; }
-        else if (stampJSON.year - todayJSON.year == 1) { return '明年' + stampJSON.month + '月' + stampJSON.day + '日'; }
-        else { return stampJSON.month + '月' + stampJSON.day + '日'; }
-      default:
-        return getDateTimeString(stampJSON);
+        case 401:
+          if (stampJSON.year - todayJSON.year > 1) { return stampJSON.year + '年' + stampJSON.month + '月'; }
+          else if (stampJSON.year - todayJSON.year == 1) { return '明年' + stampJSON.month + '月' + stampJSON.day + '日'; }
+          else { return stampJSON.month + '月' + stampJSON.day + '日'; }
+        default:
+          return getDateTimeString(stampJSON);
+      }
     }
   }
 };
